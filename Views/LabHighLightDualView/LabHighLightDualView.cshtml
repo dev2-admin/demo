@@ -1,0 +1,645 @@
+﻿
+
+@{
+    ViewBag.PageName = "LabHighLightDualView";
+}
+
+@section Styles {
+    <link href="~/Content/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" />
+}
+
+@section Scripts
+    {
+    @*<script src="~/Scripts/Table-column-Action.js"></script>*@
+    <script src="~/Content/assets/js/pages/crud/datatables/advanced/Table-column-Action.js" type="text/javascript"></script>
+    <script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+}
+<link href="~/Scripts/Tree_Shield/all.min.css" rel="stylesheet" />
+<script src="~/Scripts/Tree_Shield/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/Tree_Shield/shieldui-all.min.js"></script>
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/lab test.png" class="mr-3" style="width: 30px;"></span>Lab Highlights Dual View</h3>
+    </div>
+    <div class="kt-subheader__toolbar">
+        <button type="button" class="btn btn-brand btn-elevate btn-icon-md" id="AddNew" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>Add New</button>
+    </div>
+</div>
+<!-- end:: Content Head -->
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-4">
+            <!--begin::Portlet-->
+            <div class="kt-portlet kt-portlet--tab" style="height: 64.5rem">
+
+                <!--begin::Tree Section-->
+                <div class="row">
+                   
+                    <div class=" col-md-12 mt-4">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group align-items-center">
+                                <div class="input-group">
+                                    <input name="filterText" autoFocus
+                                           class="form-control m-input"
+                                           type="text">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="submit">
+                                            <i class="flaticon-search-1" style="color:white"></i>
+                                        </button>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <h5 class="ml-2"><code id="checkedCount"></code></h5>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-12">
+                       
+                        <div id="treeview"></div>
+                    </div>
+                    <script type="text/javascript">
+                    jQuery(function ($) {
+                        function onCheck() {
+                            debugger;
+                            // find all LI elements in the treeview and determine how many are checked
+                            var checkedCount = $("#treeview").swidget("TreeView").element.find("li").filter(function () {
+                                debugger;
+                                var value = $("input:checked").val();
+                                $(document).ready(function () {
+                                    debugger;
+                                    $("input:checked").checked(function () {
+                                        debugger;
+                                        if ($(this).prop("checked") == true) {
+                                            console.log("Checkbox is checked.");
+                                        }
+                                        else if ($(this).prop("checked") == false) {
+                                            console.log("Checkbox is unchecked.");
+                                        }
+                                    });
+                                });
+                                //var name = $("input:checked").items.value();
+                                //alert(value);
+                                return $("#treeview").swidget("TreeView").checked($(this));
+
+                            }).length;
+                            $("#checkedCount").html(checkedCount + " items checked");
+                            //$(document).on('change', '.checkbox', function () {
+                            //    if (this.checked) {
+                            //        // checkbox is checked
+                            //        var value = $("input:checked").val();
+                            //        alert(value);
+                            //    }
+                            //});
+                            //$(document).on('click', '.checkbox', function () {
+                            //    if (this.checked) {
+                            //        // checkbox is checked
+                            //        var value = $("input:checked").val();
+                            //        alert(value);
+                            //    }
+                            //});
+                            //$('input[type="checkbox"]').click(function (event) {
+                            //    var value = $("input:checked").val();
+                            //    alert(value);
+                            //});
+                            //$(":checkbox").change(function () {
+                            //    var value = $("input:checked").val();
+                            //    alert(value);
+
+                            //});
+                        }
+                        $("#treeview").shieldTreeView({
+                            checkboxes: {
+                                enabled: true,
+                                children: true
+                            },
+                            events: {
+                                check: onCheck
+                            },
+                            dataSource: {
+                                data: [
+                                    {
+                                        text: "All Results",
+                                        iconUrl: '@Url.Content( "~/Content/img/file/folder_Green.png")',
+                                        expanded: true,
+                                        items: [
+                                            {
+                                                text: "Pathology",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "Blood",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        expanded: true,
+                                                        items: [
+                                                            {
+                                                                text: "CBC",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                                expanded: true,
+                                                                items: [
+
+                                                                    {
+                                                                        text: "02-03-2020",
+                                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                                    },
+                                                                    {
+                                                                        text: "05-03-2020",
+                                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                text: "Protime",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+
+                                                            },
+                                                            {
+                                                                text: "Lipid Panal",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                            }
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        text: "Urine",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                        //expanded: false,
+                                                        //items: [
+                                                        //    {
+                                                        //        text: "license.pdf",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_pdf.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "privacy.pdf",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_pdf.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "report.xls",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_xls.png"
+                                                        //    }
+                                                        //]
+                                                    },
+                                                    {
+                                                        text: "Stool",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        //expanded: false,
+                                                        //items: [
+                                                        //    {
+                                                        //        text: "logo.jpg",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_jpeg.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "theme.css",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_txt.png"
+                                                        //    }
+                                                        //]
+                                                    },
+                                                    {
+                                                        text: "Tissues",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                text: "Radiology",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "CT/CAT Scan",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Foloroscopy",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "MRI/MRA",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Mammogropgy",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Pet Scan",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Nuclear",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        expended: true,
+                                                        items: [
+                                                            {
+                                                                text: "Bone",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            },
+                                                            {
+                                                                text: "Thyroid",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            },
+                                                            {
+                                                                text: "Thalium Cardioc Stress",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            }
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        text: "Ultrasound",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Xray",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        expended: true,
+                                                        items: [
+                                                            {
+                                                                text: "05-05-2019",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            }
+                                                        ]
+                                                    }
+
+                                                ]
+                                            },
+                                            {
+                                                text: "Microbiology",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "Aspirate for AFB",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Chlamydia",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Ear Culture/Sensitivity",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        });
+                        onCheck();
+                    });
+                    </script>
+                </div>
+                
+                <style>
+                    .container {
+                        max-width: 400px;
+                        margin: auto;
+                        overflow: hidden;
+                    }
+                </style>
+            
+                <!--end::Tree Section-->
+            </div>
+        </div>
+        <!--end::Portlet-->
+
+        <div class="col-md-4" >
+            <div id="DataTable" >
+                <div class="kt-portlet kt-portlet--tab" style="height: 64.5rem">
+                    <div class="table ">
+
+                        <div class="min-vh-100">
+                            <div class="kt-portlet__body ">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-12">
+                                        <div class="form-group m-form__group align-items-center">
+                                            <div class="input-group">
+                                                <input name="filterText" autoFocus
+                                                       class="form-control m-input"
+                                                       type="text">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-info" type="submit">
+                                                        <i class="flaticon-search-1" style="color:white"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--begin: Datatable -->
+                                <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
+                                    <thead>
+                                        <tr>
+                                            <th>Actions</th>
+                                            <th style="width:200px;">Add Task</th>
+                                            <th>Type</th>
+                                            <th>Set Reminder</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td nowrap> </td>
+                                            <td>Task 1</td>
+                                            <td>Add Patient</td>
+                                            <td>30 S</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td nowrap></td>
+                                            <td>Task 2</td>
+                                            <td>Generate Appointment</td>
+                                            <td>40 S</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap></td>
+                                            <td>Task 3</td>
+                                            <td>Add Patient</td>
+                                            <td>30 S</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!--end: Datatable -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- --------Modal-------- -->
+            <div id="myModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/lab test.png" class="mr-3" style="width: 30px;"></span>Lab Highlights Dual View</h3>
+                            <button type="button" class="close" data-dismiss="modal"></button>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group row">
+                                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Type</label>
+                                <div class="col-10">
+                                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Type" id="type">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-value-input" class="col-2 col-form-label">Value</label>
+                                <div class="col-10">
+                                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Value" id="Value">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                            <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--end::Portlet-->
+
+        </div>
+
+        <div class="col-md-4">
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__body">
+                    @*nav nav-tabs nav-fill*@
+                    @*<ul class="nav nav-tabs  nav-tabs-line " role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#EditLabHighlights_3">Edit Lab Highlights </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled " data-toggle="tab" href="#ReportViewer_4"></a>
+                        </li>
+                    </ul>*@
+                    <div class="tab-content" style="overflow:auto; height:720px">
+                        <div class="tab-pane active" id="EditLabHighlights_3" role="tabpanel">
+                            <div class="kt-portlet__head kt-portlet__head--lg">
+                                <div class="kt-portlet__head-label">
+                                    <h3 class="kt-portlet__head-title"></h3>
+                                </div>
+                                <div class="kt-portlet__head-toolbar">
+                                    <div class="kt-portlet__head-wrapper">
+                                        <div class="kt-portlet__head-actions">
+
+                                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" data-target="" style="font-size: 10px "><i class="fa fa-plus"></i>New Lab Order</button>
+                                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" style="font-size: 10px "><i class="fa fa-eye"></i>Report View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                <div class="btn-group" role="group" aria-label="First group">
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:blue"></i></button>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                    <a href="~/image/blood test.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="card-img-top" src="~/image/blood test.jpg" alt="Report" style="width:100%">
+                                </div>
+                                <br>
+                            </div>
+                            <div class="container">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                <div class="btn-group" role="group" aria-label="First group">
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:darkgreen"></i></button>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                    <a href="~/image/x-ray.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="card-img-top" src="~/image/x-ray.jpg" alt="x-ray" style="width:100%">
+                                </div>
+                                <br>
+                            </div>
+                            <div class="container">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                <div class="btn-group" role="group" aria-label="First group">
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:darkgreen"></i></button>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                    <a href="~/image/x-ray.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="card-img-top" src="~/image/x-ray.jpg" alt="x-ray" style="width:100%">
+                                </div>
+                                <br>
+                            </div>
+
+                        </div>
+                        @*<div class="tab-pane " id="ReportViewer_4" role="tabpanel">
+                            <!--begin::Portlet  -->
+                            <!--begin::Section  -->
+                            <div id="kt_content">
+                                <div class="kt-portlet kt-portlet--mobile">
+                                    <div class="kt-portlet__head kt-portlet__head--lg">
+                                        <div class="kt-portlet__head-label">
+                                           
+                                            <h3 class="kt-portlet__head-title"></h3>
+                                        </div>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <div class="kt-portlet__head-wrapper">
+                                                <div class="kt-portlet__head-actions">
+
+                                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" data-target="#myModal">Add New</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kt-portlet__body scrollmenu" style="overflow: auto;">
+
+                                        <!--begin: Datatable -->
+                                        <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>HGB</th>
+                                                    <th>WBC</th>
+                                                    <th>HbA1e</th>
+                                                    <th>Sodium</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>3/6/2020</td>
+                                                    <td>8/dl</td>
+                                                    <td>3600/ul</td>
+                                                    <td>100mg/dl</td>
+                                                    <td>145</td>
+                                                    <td nowrap></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4/6/2020</td>
+                                                    <td>9/dl</td>
+                                                    <td>3600/ul</td>
+                                                    <td>100mg/dl</td>
+                                                    <td>140</td>
+                                                    <td nowrap></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5/6/2020</td>
+                                                    <td>10/dl</td>
+                                                    <td>3600/ul</td>
+                                                    <td>100mg/dl</td>
+                                                    <td>130</td>
+                                                    <td nowrap></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!--end: Datatable -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-outline-hover-brand btn-sm"><i class="la la-print"></i> Print</button>
+                                    <button type="button" class="btn btn-outline-hover-danger btn-sm"><i class="fa fa-search"></i> View</button>
+                                    <button type="button" class="btn btn-outline-hover-brand btn-sm"><i class="fa fa-search"></i> View</button>
+                                </div>
+                            </div>
+
+
+                            <!--end::Section-->
+                            <!-- --------Modal-------- -->
+                            <div id="myModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+                                <div class="modal-dialog modal-lg">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/lab test.png" class="mr-3" style="width: 30px;"></span>Lab Highlights Dual View</h3>
+                                            <button type="button" class="close" data-dismiss="modal"></button>
+
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="form-group row">
+                                                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-2 col-form-label">Type</label>
+                                                <div class="col-10">
+                                                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Type" id="example-text-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-value-input" class="col-2 col-form-label">Value</label>
+                                                <div class="col-10">
+                                                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Value" id="example-value-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="reset" class="btn btn-label"><i class="fa fa-save"> Save</i></button>
+                                            <button type="reset" class="btn btn-outline-hover-danger"><i class="fa fa-times"> Cancel</i></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--end::Portlet-->
+                        </div>*@
+
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="la la-print"></i> Print</button>
+                    <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="fa fa-eye"></i> View</button>
+                    <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="fa fa-eye"></i> View</button>
+                </div>
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>
+
+
+<!-- end:: Content -->

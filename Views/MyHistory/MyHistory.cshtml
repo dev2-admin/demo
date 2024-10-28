@@ -1,0 +1,308 @@
+﻿@{
+
+    ViewBag.PageName = "My History";
+}
+@section Styles {
+    <link href="~/Content/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" />
+    <link href="~/Scripts/Tree_Shield/all.min.css" rel="stylesheet" />
+    <script src="~/Scripts/Tree_Shield/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/Tree_Shield/shieldui-all.min.js"></script>
+}
+
+@section Scripts
+    {
+
+
+
+
+    <script src="~/Scripts/Table-column-Action.js"></script>
+    <script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+
+
+}
+
+
+<!-- begin:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+
+        <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/Medical history.png" class="mr-3" style="width: 30px;"></span>My History</h3>
+
+
+    </div>
+
+</div>
+<!-- end:: Content Head -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="kt-portlet">
+        <div class="kt-portlet__body">
+            <form class="kt-form">
+            </form>
+
+
+
+            <div class="kt-portlet__body  ">
+
+                <div class="row">
+
+
+
+                    @*//--------------- Notes View tree start--------------------//*@
+                    <div class="col-md-4">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet kt-portlet--tab">
+                            <div class="kt-portlet__body">
+                                <div class="form-group row ">
+
+                                    <div class="kt-input-icon kt-input-icon--left col-10">
+                                        <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-outline-hover "><i class="la la-filter" style="color:darkgreen"></i></button>
+                                    </div>
+                                </div>
+                                <!--begin::Tree Section-->
+                                <div class="row" style="margin-top:-1%; width:110%">
+                                    <div id="treeview"></div>
+
+                                </div>
+                                <script type="text/javascript">
+                                    jQuery(function ($) {
+                                        function onCheck() {
+
+
+
+                                            // find all LI elements in the treeview and determine how many are checked
+                                            var checkedCount = $("#treeview").swidget("TreeView").element.find("li").filter(function () {
+                                                return $("#treeview").swidget("TreeView").checked($(this));
+                                            }).length;
+                                            //get the checkbox text
+                                            var checkedtext = $("#treeview").swidget("TreeView").element.find("li").filter(function () {
+                                                return $("#treeview").swidget("TreeView").checked($(this));
+                                            }).text();
+
+                                            //show text at grid
+                                            $("#checkedCount").html(checkedtext);
+                                        }
+                                        $("#treeview").shieldTreeView({
+                                            //checkboxes: {
+                                            //    enabled: true,
+                                            //    children: true
+                                            //},
+                                            //events: /*{*/
+                                            //    check: onCheck
+                                            //},
+                                            dataSource: {
+                                                data: [
+                                                    {
+                                                        text: "All History",
+                                                         iconUrl: '@Url.Content("~/Content/img/file/folder.png")',
+
+                                                        expanded: true,
+
+                                                        items: [
+                                                            {
+                                                                text: "Family History",
+                                                                 iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+
+                                                                //expanded: true,
+
+                                                            },
+                                                            {
+                                                                text: "Social History",
+
+                                                                iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+
+                                                            },
+                                                            {
+                                                                text: "Occupational History",
+                                                                iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+
+                                                            },
+                                                            {
+                                                                text: "Medical History",
+                                                                iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                expanded: true,
+                                                                items: [
+                                                                    {
+                                                                        text: "Active Problems   ",
+                                                                        iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                        //expanded: true,
+                                                                    },
+                                                                    {
+                                                                        text: "InActive Problems   ",
+                                                                        iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                        //expanded: true,
+                                                                    },
+                                                                ]
+                                                            },
+                                                            {
+                                                                text: "Surgical History",
+                                                                iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                expanded: true,
+                                                                items: [
+                                                                    {
+                                                                        text: "Major ",
+                                                                        iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                        //expanded: true,
+                                                                    },
+                                                                    {
+                                                                        text: "Minor",
+                                                                        iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                        //expanded: true,
+                                                                    },
+                                                                ]
+                                                            },
+                                                            {
+                                                                text: "Allergy History",
+                                                                iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                            },
+                                                            {
+                                                                text: "Medications",
+                                                                iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                expanded: true,
+                                                                items: [
+                                                                    {
+                                                                        text: "Active Meds",
+                                                                        iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                        //expanded: true,
+                                                                    },
+                                                                    {
+                                                                        text: "Previous Meds ",
+                                                                        iconUrl: '@Url.Content("~/Content/img/file/file_extension_txt.png")',
+                                                                        //expanded: true,
+                                                                    },
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+
+                                                ]
+                                            }
+                                        });
+
+                                        onCheck();
+                                    });
+                                </script>
+                                <style>
+                                    .container {
+                                        max-width: 400px;
+                                        margin: auto;
+                                        overflow: hidden;
+                                    }
+                                </style>
+
+                                <p><span></span></p>
+                                <!--end::Tree Section-->
+
+
+
+                            </div>
+                        </div>
+                        <!--end::Portlet-->
+                    </div>
+
+
+
+
+                    <div class="col-md-8">
+                        <!--begin::Portlet-->
+                        <div class="kt-portlet">
+
+                            <form class="kt-form" style="height: 62rem">
+                                <div class="kt-portlet__body">
+                                    <div class="kt-portlet">
+                                        <div class="kt-portlet__body">
+                                            <div class="kt-portlet__head kt-portlet__head--lg">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title"></h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <div class="kt-portlet__head-wrapper">
+                                                        <div class="kt-portlet__head-actions">
+
+                                                            <button type="button" class="btn btn-info"><i class="flaticon2-refresh"></i>Change Request</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content" style=" height:720px ; overflow:auto ">
+                                        @*<div class="tab-pane active" id="EditLabHighlights_3" role="tabpanel">*@
+
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title"></h3>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 text-left">
+                                                <div id="kt_table_1_filter" class="dataTables_filter">
+                                                    <div class="kt-portlet__head-label">
+                                                        <h6 class="kt-portlet__head-title">Family History:02-02-2020,02:30</h6>
+                                                    </div>
+                                                </div>
+                                            </div><div class="col-sm-6 text-right">
+                                                <div class="dt-buttons btn-group">
+                                                    <button class="btn btn-secondary buttons-print" onclick="window.print()" tabindex="0" aria-controls="kt_table_1" type="button">
+                                                        <span>Print</span><i class="la la-print" style="color:blue"></i>
+                                                    </button>
+
+
+                                                    <button class="btn btn-secondary buttons-copy buttons-html5" onclick="window.closed()" tabindex="0" aria-controls="kt_table_1" type="button">
+                                                        <span>Close</span><i class="fa fa-times" style="color:red"></i>
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+
+
+                                            &nbsp;
+                                            &nbsp;
+
+                                            <div class="container" style="max-width:705px">
+                                                <div>
+
+
+                                                    <img class="card-img-top" src="~/image/blood test.jpg" alt="Report" style="width:100%">
+                                                </div>
+                                                <br>
+                                                <img class="card-img-top" src="~/image/blood test.jpg" alt="Report" style="width:100%">
+                                            </div>
+
+
+
+
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>

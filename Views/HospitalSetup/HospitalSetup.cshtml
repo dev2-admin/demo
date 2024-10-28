@@ -1,0 +1,244 @@
+﻿@section Scripts
+    {
+    <script type="text/javascript">
+
+        function myFunction() {
+            debugger;
+            var val = document.getElementById("SelectFile").innerText;
+            document.getElementById("Setfile").src = val;
+        }
+    </script>
+
+
+}
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/hospital.svg" class="mr-3" style="width: 30px;"></span> Create Hospital Setup</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <div class="form-group row">
+        <input type="hidden" id="Hospital_ID" />
+        <input type="hidden" id="Hospital_Address_ID" />
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Hospital Name</label>
+                <input type="text" class="form-control" id="Hospital_Description" placeholder="Add Hospital Name">
+            </div>
+
+
+            <div class="form-group">
+                <label>Contact Person</label>
+                <input type="text" class="form-control" id="Hospital_Contact_Person" placeholder="Contact Person Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Website URL</label>
+                <input type="url" class="form-control" id="Hospital_URL" placeholder="Website URL*">
+            </div>
+            <div class="form-group">
+                <label>License Number</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" id="Hospital_License_No" placeholder="License Number*">
+            </div>
+
+            <div class="form-group">
+                <label>Time Zone</label>
+                <select class="form-control" id="Hospital_TimeZone">
+                    <option value="5">Alaska Standard Time</option>
+                    <option value="7">Eastern Standard Time</option>
+                    <option value="3">Central Standard Time</option>
+                    <option value="6">Hawaii Standard Time</option>
+                    <option value="4">Mountain Standard Time</option>
+                    <option value="2">Pacific Standard Time</option>
+                    <option value="1">Pakistan Standard Time</option>
+
+
+                </select>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputPassword1">EIN</label>
+                <input type="text" class="form-control" id="Hospital_EIN" placeholder="EIN*">
+            </div>
+            @*<div class="form-group">
+                <label for="exampleInputPassword1">NPI</label>
+                <input type="text" class="form-control" id="Hospital_NPI" placeholder="NPI*">
+            </div>*@
+            <div class="form-group">
+                <label for="exampleInputPassword1">NTN</label>
+                <input type="text" class="form-control" id="Hospital_NTN" placeholder="NTN*">
+            </div>
+            <div class="form-group">
+                <label>Specialization</label>
+                <input type="text" class="form-control" id="Hospital_Specialization" placeholder="Specialization*">
+            </div>
+            <div class="form-group">
+                <label>Slogan</label>
+                <input type="text" class="form-control" id="Hospital_Slogan" placeholder="Slogan*">
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div id="ShowAddress"></div>
+    <div class="form-group col-md-6">
+        @*<label>File Browser</label>*@
+        <div class="row">
+          
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <img src="" id="uploadPreview" class="rounded border border-info" style="visibility:hidden; width:300px; min-width:300px; height:200px" alt="Select Image">
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="custom-file mt-2">
+                    <input id="uploadImage" type="file" class="custom-file-input" name="myPhoto" onchange="PreviewImage();" />
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-2">
+                        <button type="reset" style="visibility:hidden" id="upload" class="btn btn-brand"><i class="fa fa-upload"></i>Upload</button>
+                    </div>
+
+
+                </div>
+         
+</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+
+    <button type="button" id="SaveChanges" onclick="M_SaveData();" class="btn btn-info">Save</button>
+    <button type="button" id="Update" onclick="Update();" class="btn btn-info" style="display:none">Update</button>
+    <button type="button" id="Delete" onclick="Delete();" class="btn btn-info" style="display:none">Delete</button>
+
+</div>
+
+
+
+<script type="text/javascript">
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+            document.getElementById("uploadPreview").style.visibility = "visible";
+            document.getElementById("upload").style.visibility = "visible";
+        };
+    };
+    @*$("#upload").click(function () {
+        debugger;
+        var _HospitalSetup = '@Url.Action("AttachFile", "HospitalSetup")';
+        var up_Image = document.getElementById("uploadImage").files[0];
+        $.ajax({
+            url: _HospitalSetup,
+            type: "POST",
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(up_Image),
+   
+            success: function (response) {
+                debugger;
+
+                console.log(response);
+
+            },
+            error: function (errorThrown) {
+               
+                console.log(errorThrown.responseText);
+            }
+        });
+    });*@
+
+    function validate() {
+        var isValid = true;
+        if ($('#Hospital_Description').val().trim() == "") {
+            $('#Hospital_Description').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Hospital_Description').css('border-color', 'lightgrey');
+        }
+
+        return isValid;
+    }
+    function M_SaveData() {
+        debugger;
+        //var $buttonClicked = $('#Save');
+        //var url = $buttonClicked.data('url');
+        var res = validate();
+        if (res == false) {
+            return false;
+        }
+        //  $('#Hospital_Address_ID').val(SaveData());
+        var formData = {
+            Tenant_ID: 1,//$('#Tenant_ID').val(),
+            Hospital_Description: $('#Hospital_Description').val(),
+            Hospital_EIN: $('#Hospital_EIN').val(),
+            Hospital_NPI: $('#Hospital_NPI').val(),
+            Hospital_NTN: $('#Hospital_NTN').val(),
+            Hospital_Contact_Person: $('#Hospital_Contact_Person').val(),
+            Hospital_URL: $('#Hospital_URL').val(),
+            Hospital_License_No: $('#Hospital_License_No').val(),
+            Hospital_Address_ID: $('#Hospital_Address_ID').val(),
+            Hospital_TimeZone: $('#Hospital_TimeZone').val(),
+            Hospital_Specialization: $('#Hospital_Specialization').val(),
+            Hospital_Slogan: $('#Hospital_Slogan').val(),
+
+            Address_Line_1: $('#Address_Line_1').val(),
+            Address_Line_2: $('#Address_Line_2').val(),
+            Address_Line_3: $('#Address_Line_3').val(),
+            Country_ID: $('#Country_ID').val(),
+            State_ID: $('#State_ID').val(),
+            City_ID: $('#City_ID').val(),
+            Postal_Zip_Code: $('#Postal_Zip_Code').val(),
+            Address_Contact_Type1_LOV_ID: $('#Address_Contact_Type1_LOV_ID').val(),
+            Address_Contact_1: $('#Address_Contact_1').val(),
+            Address_Contact_Type2_LOV_ID: $('#Address_Contact_Type2_LOV_ID').val(),
+            Address_Contact_2: $('#Address_Contact_2').val(),
+            Address_Email_1: $('#Address_Email_1').val(),
+            Address_Email_2: $('#Address_Email_2').val(),
+
+            Entered_Date: new Date($.now()),
+            Entered_By: '2'
+        };
+
+        $.ajax({
+            url: baseUrl + "/api/HospitalSetup",
+            type: "POST",
+            dataType: 'json',
+            contentType: 'application/json',
+            //data: { 'newHospital': JSON.stringify(formData), 'newAddress': JSON.stringify(AddressData) },
+            data: JSON.stringify(formData),
+            success: function (response) {
+                debugger;
+
+                $('#Employee_List').DataTable().ajax.reload();
+                toastr.success("Saved Successfully" + response, "Success!");
+                //   Refresh();
+
+            },
+            error: function (errorThrown) {
+                toastr.error("Data Not Saved", errorThrown.responseText);
+                console.log(errorThrown.responseText);
+            }
+        });
+    }
+
+
+</script>

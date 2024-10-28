@@ -1,0 +1,548 @@
+﻿@section Scripts {
+    <!--<script src="~/Scripts/Employee/Order.js"></script>-->
+}
+
+<!--begin::Portlet-->
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title" style="color:white">
+                Orders Issued
+            </h3>
+
+        </div>
+
+    </div>
+
+    <!--begin::Form   style="overflow:auto;height:500px"-->
+    <form class="kt-form">
+        <div>&nbsp;</div>
+        <div class="input-group col-md-12">
+            <input type="text" placeholder="Search ..." class="form-control m-input" autoFocus>
+
+            <div class="input-group-append">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit">
+                        <i class="flaticon-search-1" style="color:white;"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="kt-portlet__body">
+            <div class="kt-section kt-section--first">
+                <div>
+                    <h3 class="kt-section__title">Medicine </h3>
+
+
+                </div>
+
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table id="tblMedicine" class="table  table-borderless table-hover ">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 80%;">
+                                            Kestine 20 mg - Oral - Once - Daily - Start from 09-06-2020 - Until Discontinued
+                                            <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Active
+                                        </td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>
+                                            Ventolin Inhaler - As Required - Daily - Start from 09-06-2020 - Until Discontinued <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : InActive
+                                        </td>
+
+                                    </tr>
+
+
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Labs</h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Labs">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>PFT On 09-06-2020 - Test by Internal Lab <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>CBC On 09-06-2020 - Test by Agha Khan Lab <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Pending</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Imaging</h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Imaging">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>MRI On 09-06-2020 - Test by Internal Lab <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td style='width: 80%;'>CT Scan On 09-06-2020 - Test by Agha Khan Lab <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Pending</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Treatment</h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Treatment">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Nebulization - Twice - Daily - Start from 09-06-2020 - Until 11-06-2020 <br /> Issued On 07-06-2020 by Dr Muhammad Khan <br /> Issued to Nurse Jane Doe , Status : Comleted</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Procedures</h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Procedures">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Bronchoscopy On 08-06-2020 - Provider Dr John Baptiste <br /> Issued On 07-06-2020 by Dr Muhammad Khan - Status : Pending</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Diet </h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Diet">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Follow Diabetic Diet - Start from 09-06-2020 - Until Discontinued</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Exercise</h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Exercise">
+
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Light Jogging - Once - Weekly - Start from 09-06-2020 - Until 11-07-2020 <br /> Issued On 07-06-2020 by Dr Muhammad Khan</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">FollowUp - Appointment </h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="FollowUp">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Follow Up Date: 09-06-2020 <br /> Appointment Status : Scheduled</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Referrals </h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Referrals">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Dept/Clinic: Rheumatology,Provider : Dr Muhammad Tahir <br /> Reason of Referral:Joint Pain ,Referred by Dr John Baptiste , Referred On :07-06-2020, Appointment Status : Not Scheduled</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Patient Education </h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Education">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Information about following a diabetic diet</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                <h3 class="kt-section__title">Other </h3>
+                <div class="kt-section__body">
+                    <div class="form-group row">
+
+                        <div class="col-md-12">
+                            <table class="table  table-borderless table-hover " id="Other">
+                                <thead style="display:none">
+                                    <tr>
+                                        <th>
+                                            Action
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-star"></i> Favorite</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i>View</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-undo"></i>Reorder</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-sticky-note"></i>Suggestion</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style='width: 80%;'>Avoid Passive Smoking</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <!--end::Form-->
+    <!--end::Form-->
+</div>
+
+<!--end::Portlet-->

@@ -1,0 +1,73 @@
+﻿
+<script src="~/Content/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
+<script> Load_Combo_City()
+    </script>
+<!-- Modal -->
+<style>
+
+    .file {
+        visibility: hidden;
+        position: absolute;
+    }
+</style>
+<div class="modal-header">
+    <h4 class="kt-subheader__title"><span><i class="fa fa-map fa-1x"></i></span>&nbsp;<b>City</b></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+
+
+    <div class="tab-content">
+        <div class="col-md-4 " style="display:none">
+            <label>city ID</label>
+            <input type="text" id="City_ID" class="form-control">
+
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <label>city Name</label>
+                <input type="text" id="City_Name" class="form-control">
+
+            </div>
+
+            <div class="col-md-8">
+                <label>State Name </label>
+                <div class="kt-input-icon">
+                    <select class="form-control" Id="State_ID">
+
+                        <option>Choose One</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <label class="">Short Code</label>
+                <input type="text" ID="City_Short_Code"class="form-control">
+
+            </div>
+            <div class="col-md-8">
+                <label>Description</label>
+                <input type="text" ID="City_Description" class="form-control">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" id="SaveChanges" onclick="Add()" class="btn btn-info">Save</button>
+   <button type="button" id="Update" onclick="Update()" class="btn btn-info">Update</button>
+    <button type="button" id="Delete" onclick="Delete()" class="btn btn-info">Delete</button>
+</div>
+

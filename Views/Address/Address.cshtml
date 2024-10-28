@@ -1,0 +1,115 @@
+﻿<!-- Modal -->
+@*<div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/icons/svg/Communication/Address-card.svg" class="mr-3" style="width: 30px;"></span>Create Address</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>*@
+
+<script src="@Url.Content("~/Scripts/SystemAdmin/Address.js")"></script>
+<div class="form-group">
+    
+        <label class="">Address Type</label>
+        <select class="form-control form-control-sm" Id="Address_Type_LOV_ID">
+        </select>
+   
+</div>
+    <div class="form-group form-group-sm">
+        <label>Address Line 1</label>
+        <input type="text" class="form-control form-control-sm" Id="Address_Line_1">
+
+    </div>
+    <div class="form-group form-group-sm">
+
+
+        <label>Address Line 2</label>
+        <input type="text" class="form-control form-control-sm" Id="Address_Line_2">
+
+    </div>
+    <div class="form-group form-group-sm">
+
+
+
+        <label>Address Line 3</label>
+        <input type="text" class="form-control form-control-sm" Id="Address_Line_3">
+
+    </div>
+    <div class="form-group form-group-sm row">
+        <div class="col-md-6">
+            <label class="">Contact Type 1</label>
+            <select class="form-control form-control-sm" Id="Address_Contact_Type1_LOV_ID">
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="">Contact</label>
+            <input type="text" class="form-control form-control-sm" Id="Address_Contact_1">
+        </div>
+
+    </div>
+    <div class="form-group form-group-sm row">
+        <div class="col-md-6">
+            <label class="">Contact Type 2</label>
+
+            <select class="form-control form-control-sm" Id="Address_Contact_Type2_LOV_ID">
+            </select>
+        </div>
+        <div class="col-md-6">
+
+            <label class="">Contact</label>
+
+            <input type="text" class="form-control form-control-sm" Id="Address_Contact_2">
+        </div>
+
+    </div>
+    <div class="form-group form-group-sm row">
+        <div class="col-md-6">
+            <label>Email 1</label>
+            <input type="email" class="form-control form-control-sm" Id="Address_Email_1">
+        </div>
+        <div class="col-md-6">
+            <label>Email 2</label>
+            <input type="email" class="form-control form-control-sm" Id="Address_Email_2">
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm row">
+        <div class="col-md-6">
+            <label class="">Country</label>
+
+            <select class="form-control form-control-sm" Id="Country_ID">
+
+                <option value="-1">Choose One</option>
+
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="">State</label>
+            <select class="form-control form-control-sm" Id="State_ID">
+                <option value="-1">Choose One</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group form-group-sm row">
+        <div class="col-md-6">
+            <label class="">City</label>
+            <select class="form-control form-control-sm" Id="City_ID">
+                <option value="-1">Choose One</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>ZIP</label>
+            <input type="text" class="form-control form-control-sm" Id="Postal_Zip_Code">
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm row">
+        <input type="hidden" id="Address_ID" />
+    </div>
+
+    @*<div class="modal-footer">
+                <button type="button" id="Address_Close" class="btn btn-secondary"><i class="fa fa-times"></i>Close</button>
+                <button type="button" class="btn btn-info" onclick="SaveData();"><i class="fa fa-save"></i>Add</button>
+        </div>*@
+
+

@@ -1,0 +1,165 @@
+﻿
+
+
+@section Styles{
+}
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#Date').datetimepicker({
+                todayHighlight: true,
+                autoclose: true,
+                format: 'dd/MM/yyyy hh:ii'
+            });
+        });
+
+
+
+    </script>
+
+}
+
+
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"><span><img style="width:30px" class="mr-3"  src="~/Content/assets/media/med360/change request.png"></span>Refill Request Form</h3>
+
+    </div>
+    @*<div class="kt-subheader__toolbar">
+
+            <button id="CreateEmp" type="button" class="btn btn-info"><i class="fa fa-plus"></i>Create New Employee</button>
+
+        </div>*@
+</div>
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="kt-portlet">
+        <div class="kt-portlet__body">
+            <form class="kt-form">
+
+                <div class="form-group form-group-sm">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="Date">Date</label>
+                            <input id="Date" name="date" class="form-control form-control-sm" placeholder="Select Date & Time" />
+                        </div>
+                        <div class="col-md-8">
+                            <label for="PatientName">Patient Name</label>
+                            <input id="PatientName" name="patientName" class="form-control form-control-sm" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group form-group-sm">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <label for="MRNo">MR No</label>
+                            <input id="MRNo" name="MRNo" class="form-control form-control-sm" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="Phone">Phone</label>
+                            <input id="Phone" name="Phone" class="form-control form-control-sm" />
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="MedicineName">Medicine Name</label>
+                            <div class="kt-input-icon">
+                                <input id="MedicineName" name="medicineName" class="form-control form-control-sm" />
+                                <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="Dosage">Dosage</label>
+                            <input id="Dosage" name="dosage" class="form-control form-control-sm" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-group-sm">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="Frequancy">Frequency</label>
+                            <input id="Frequancy" name="fequancy" class="form-control form-control-sm" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="ActiveProblem">Active Problem</label>
+                            <input id="ActiveProblem" name="ActiveProblem" class="form-control form-control-sm " />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Choose Action</label>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="kt-checkbox">
+                                <input type="checkbox"> Refill
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control form-control-sm">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="kt-checkbox">
+                                <input type="checkbox"> Refill
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="label-default"> Once and scheduled visit</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="kt-checkbox">
+                                <input type="checkbox">No Refill
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="label-default"> Detail Visit</label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row mt-4">
+                    <div class="col-md-12 kt-align-right">
+                        <button type="button" class="btn btn-danger">Sign And Issue</button>
+                        <button type="button" class="btn btn-info">Process Request</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>

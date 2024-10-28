@@ -1,0 +1,171 @@
+﻿<script type="text/javascript">
+
+    $("#Speciality_ID").change(function () {
+        debugger;
+        var _Speciality_ID = $('#Speciality_ID').val();
+        if (_Speciality_ID != "Choose One") {
+            var _Clause = 'Speciality_ID=' + _Speciality_ID;
+            $.ajax({
+                url: baseUrl + "/api/SubSpeciality/Dynamic/" + _Clause,
+                type: "GET",
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (response) {
+                    debugger;
+                    var len = response.length;
+
+                    $('#Sub_Speciality_ID').empty();
+                    $('#Sub_Speciality_ID').append($('<option></option>').val(0).html("Choose One"));
+                    $("#Sub_Speciality_ID option:first-child").attr("disabled", "disabled");
+                    for (var i = 0; i < len; i++) {
+                        var id = response[i]['Sub_Speciality_ID'];
+                        var name = response[i]['Sub_Speciality_Name'];
+
+                        $("#Sub_Speciality_ID").append("<option value='" + id + "'>" + name + "</option>");
+
+                    }
+                    if (seletedValue != undefined || seletedValue != null || seletedValue != "") {
+
+                        $('#Sub_Speciality_ID').val(seletedValue);
+                    }
+                    else {
+                        $('#Sub_Speciality_ID').val(0);
+                    }
+
+                },
+                error: function (errorThrown) {
+                    $('#Sub_Speciality_ID').empty();
+                    $('#Sub_Speciality_ID').append($('<option></option>').val(0).html("Choose One"));
+                    console.log(errorThrown);
+                }
+            });
+        } else {
+            $('#Sub_Speciality_ID').val("Choose One");
+        }
+
+    });
+
+</script>
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/hospital.svg" class="mr-3" style="width: 30px;"></span>Create Speciality Clinic</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <div class="form-group row">
+        <input type="hidden" id="Speciality_Clinic_ID" />
+        <input type="hidden" id="Tenant_ID" />
+
+        <div class="col-md-5">
+            <div class="form-group">
+                <label>Hospital Name</label>
+                <select class="form-control" id="Hospital_ID">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Speciality Clinic Code</label>
+                <input type="text" class="form-control" id="Speciality_Clinic_Code">
+            </div>
+            <div class="form-group">
+                <label>Speciality Clinic Name</label>
+                <input type="text" class="form-control" id="Speciality_Clinic_Description">
+            </div>
+
+            <div class="form-group">
+                <label>Speciality Name</label>
+                <select class="form-control" id="Speciality_ID">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Sub Speciality Name</label>
+                <select class="form-control" id="Sub_Speciality_ID">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Contact Type</label>
+                <select class="form-control" id="Contact_Type_LOV_ID">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Phone No.</label>
+                <input type="number" class="form-control" id="Speciality_Clinic_Contact">
+            </div>
+
+
+
+
+
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="Speciality_Clinic_Email">
+            </div>
+            <div class="form-group">
+                <label>Clinic Incharge</label>
+                <input type="text" class="form-control" id="Speciality_Clinic_Incharge">
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="exampleInputPassword1">Clinic Opening Timing</label>
+                    <input type="time" class="form-control" id="Speciality_Clinic_Start_Time">
+
+                </div>
+                <div class="col-md-6">
+                    <label for="exampleInputPassword1">Clinic Closing Timing</label>
+                    <input type="time" class="form-control" id="Speciality_Clinic_End_Time">
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" id="Speciality_Clinic_Detail"></textarea>
+
+            </div>
+            <div class="form-group">
+                <label>Off Day</label>
+                <div class="kt-checkbox-list" id="Speciality_Clinic_Off_Days">
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="1"> Monday <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="2"> Tuesday <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="3"> Wednesday <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="4"> Thursday <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="5"> Friday <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="6"> Saturday <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox" name="Speciality_Clinic_Off" value="7"> Sunday <span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+
+    <button type="button" id="SaveChanges" onclick="Add();" class="btn btn-info">Save</button>
+    <button type="button" id="Update" onclick="Update();" class="btn btn-info" style="display:none">Update</button>
+    <button type="button" id="Delete" onclick="Delete();" class="btn btn-info" style="display:none">Delete</button>
+
+</div>
+
+

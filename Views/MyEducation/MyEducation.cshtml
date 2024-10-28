@@ -1,0 +1,269 @@
+﻿
+@{
+    ViewBag.PageName = "My Education";
+}
+
+@section Styles {}
+
+@section Scripts
+    {}
+<link href="~/Scripts/Tree_Shield/all.min.css" rel="stylesheet" />
+<script src="~/Scripts/Tree_Shield/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/Tree_Shield/shieldui-all.min.js"></script>
+<!-- start:: Content Head -->
+<div class="kt-subheader   kt-grid__item row" id="kt_subheader">
+    <div class="kt-subheader__main col-md-9">
+        <h3 class="kt-subheader__title">@*<span><img src="~/Content/assets/media/med360/change request.png" class="mr-3" style="width: 30px;"></span>*@<i class="fa fa-book"></i> My Education</h3>
+    </div>
+    <div class="kt-subheader__toolbar col-md-3">
+        <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="AddNew" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>Request Education</button>
+    </div>
+</div>
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+    <!--begin::Portlet-->
+    <div class="kt-portlet kt-portlet--mobile">
+
+
+        @*<div class="row">
+
+            </div>*@
+
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="kt-portlet kt-portlet--tab">
+                        <div class="kt-portlet__body ">
+                            <div class="row pt-0 border-bottom">
+                                <div class="kt-portlet__head-label col-md-5">
+                                    <div class="kt-portlet__head-actions">
+                                        <h3 class="kt-portlet__head-title"> Encounter: <code>Ali Raza</code>  </h3>
+                                    </div>
+                                </div>
+                                <div class="kt-portlet__head-label col-md-4">
+                                    <div class="kt-portlet__head-actions">
+                                        <h3 class="kt-portlet__head-title"> 25 Yrs  </h3>
+                                    </div>
+                                </div>
+                                <div class="kt-portlet__head-label col-md-3">
+                                    <div class="kt-portlet__head-actions">
+                                        <h3 class="kt-subheader__title">Mr No: 12345</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet kt-portlet--tab" style="height:62rem; overflow:auto">
+                        <div class="kt-portlet__body ">
+                            <div class="row pt-0 border-bottom">
+                                <div class="kt-portlet__head-label col-sm-10">
+                                    <div class="kt-portlet__head-actions">
+                                        All Education
+                                    </div>
+                                </div>
+                                <div class="kt-portlet__head-toolbar col-sm-2">
+                                    <div class="kt-portlet__head-wrapper">
+                                        <div class="dropdown dropdown-inline">
+                                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="la la-reorder"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="kt-nav">
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link">
+                                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                                            <span class="kt-nav__link-text">Reports</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link">
+                                                            <i class="kt-nav__link-icon flaticon2-send"></i>
+                                                            <span class="kt-nav__link-text">Messages</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link">
+                                                            <i class="kt-nav__link-icon flaticon2-pie-chart-1"></i>
+                                                            <span class="kt-nav__link-text">Charts</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link">
+                                                            <i class="kt-nav__link-icon flaticon2-avatar"></i>
+                                                            <span class="kt-nav__link-text">Members</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-nav__item">
+                                                        <a href="#" class="kt-nav__link">
+                                                            <i class="kt-nav__link-icon flaticon2-settings"></i>
+                                                            <span class="kt-nav__link-text">Settings</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center mt-3">
+                                <div class="col-md-12">
+                                    <div class="form-group m-form__group align-items-center">
+                                        <div class="input-group">
+                                            <input name="filterText" autoFocus
+                                                   class="form-control m-input"
+                                                   type="text">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info" type="submit">
+                                                    <i class="la la-filter" style="color:white"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--begin::Tree Section-->
+
+                        <div class="row" style="margin-top:-8%">
+                            <div class="col-md-12">
+                                <div id="treeview"></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            jQuery(function ($) {
+                                function onCheck() {
+                                    // find all LI elements in the treeview and determine how many are checked
+                                    var checkedCount = $("#treeview").swidget("TreeView").element.find("li").filter(function () {
+                                        return $("#treeview").swidget("TreeView").checked($(this));
+                                    }).length;
+                                    $("#checkedCount").html(checkedCount + " items checked");
+                                }
+                                $("#treeview").shieldTreeView({
+                                    checkboxes: {
+                                        enabled: false,
+                                        children: false
+                                    },
+                                    events: {
+                                        check: onCheck
+                                    },
+                                    dataSource: {
+                                        data: [
+                                            {
+                                                text: "All Education",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "Diabetic Diet",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+
+                                                    },
+                                                    {
+                                                        text: "Heart Disease",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+
+                                                    },
+                                                    {
+                                                        text: "Chemothrapy Care",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Lukemia Home Care",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+
+                                                    },
+                                                    {
+                                                        text: "Home Excercises",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+
+                                                    },
+                                                    {
+                                                        text: "Covid-19 Guidlines",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Hamstring Ijury Guidelines",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+
+                                                    },
+
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                });
+                                onCheck();
+                            });
+                        </script>
+                        <style>
+                            .container {
+                                max-width: 400px;
+                                margin: auto;
+                                overflow: hidden;
+                            }
+                        </style>
+                        @*<p><span id="checkedCount"></span></p>*@
+                        <!--end::Tree Section-->
+                        @*</div>*@
+                    </div>
+                    <!--end::Portlet-->
+                </div>
+                <div class="col-md-8">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <form class="kt-form" style="height: 62rem; overflow:auto">
+                            <div class="kt-portlet__body">
+                                <div class="form-group">
+
+                                    <div class="kt-portlet__head kt-portlet__head--lg" style="margin-top:-4%">
+                                        <div class="kt-portlet__head-label">
+
+                                            <div class="kt-portlet__head-actions">
+                                                Chemothrapy Info: 02-03-02020 15:30
+                                            </div>
+                                        </div>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <div class="kt-portlet__head-wrapper">
+                                                <div class="dropdown dropdown-inline">
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon btn-circle"><i class="la la-floppy-o"></i></button>
+                                                    <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon btn-circle"><i class="la la-close"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <img src="~/image/report.png" />
+
+                                </div>
+
+                                @*<div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>*@
+
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <!--end::Portlet-->
+                    <!-- --------Start Modal-------- -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--end::Portlet-->
+
+</div>
+
+<!-- end:: Content -->

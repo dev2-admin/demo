@@ -1,0 +1,2315 @@
+﻿
+@{
+    ViewBag.PageName = "Patient Encounter";
+
+}
+@section Styles
+{
+
+    <link href="@Url.Content("~/Content/assets/vendors/custom/datatables/datatables.bundle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/assets/vendors/custom/datatables/patient-encounter.css")" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+
+
+        /*.mainPatientEncounter > svg rect{
+            width:60px !important;
+            margin: 0 auto !important
+        }*/
+
+        .kt-portlet {
+            margin-bottom: 10px;
+        }
+
+            .kt-portlet .kt-portlet__head {
+                min-height: 40px;
+                padding: 5px 5px;
+                background-color: #038dfd;
+            }
+
+            .kt-portlet .kt-portlet__body {
+                padding: 5px 5px;
+            }
+
+
+            .kt-portlet .kt-portlet__head.kt-portlet__head--fit {
+                background-color: #038dfd;
+            }
+
+        .kt-form {
+            overflow: auto;
+        }
+        /*.partialViewWrapper {
+
+            overflow-y: auto;
+            overflow-x:hidden auto !important;
+        }*/
+
+
+        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+            /*padding-right: 5px;
+            padding-left: 5px;*/
+        }
+        .gutter {
+            cursor: e-resize;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            display:flex;
+            z-index: 99;
+        }
+            .gutter:hover {
+                cursor: e-resize;
+                background: #ececf2;
+                z-index:99;
+            }
+            .gutter::before {
+                content: "";
+                width: 0;
+                height: 0;
+                border-top: 3px solid transparent;
+                border-right: 6px solid #4f4f51;
+                border-bottom: 3px solid transparent;
+                display: flex;
+                margin-right:1px;
+            }
+            .gutter::after {
+                content: "";
+                width: 0;
+                height: 0;
+                border-top: 3px solid transparent;
+                border-left: 6px solid #4f4f51;
+                border-bottom: 3px solid transparent;
+                display: flex;
+                margin-left: 1px;
+            }
+        
+    </style>
+}
+
+@section Scripts {
+
+    @**@
+
+    <script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+
+    @*<script src="~/Content/assets/js/pages/crud/datatables/advanced/row-grouping.js" type="text/javascript"></script>*@
+
+    <script src="~/Content/assets/js/pages/crud/datatables/advanced/Table-column-Action.js" type="text/javascript"></script>
+
+
+    @*<script src="~/Scripts/Tree_Shield/jquery-1.11.1.min.js"></script>
+        <script src="~/Scripts/Tree_Shield/shieldui-all.min.js"></script>*@
+    <script type="text/javascript">
+        var demo3 = function () {
+            // BAR CHART
+            new Morris.Bar({
+                element: 'kt_morris_3',
+                data: [{
+                    y: '04/08/2020',
+                    a: 100,
+
+                },
+
+                ],
+                xkey: 'y',
+                ykeys: ['a'],
+                labels: ['HR'],
+                barColors: ['#038dfd'],
+                barThickness: 2,
+                maxBarThickness: 3,
+                minBarLength: 1
+
+            });
+        }
+
+
+        $(document).ready(function () {
+            demo3();
+            demo3.resize();
+            demo3.redraw();
+        });
+
+        $(document).ready(function () {
+
+            $("#OrderIssue").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "OrderIssue" });
+            $("#Medicine").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Medicine" });
+            });
+            $("#Treatment").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Treatment" });
+            });
+            $("#Referral").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Referral" });
+            });
+            $("#Procedure").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Procedure" });
+            });
+            $("#Exercise").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Exercise" });
+            });
+            $("#PatientEducation").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "PatientEducation" });
+            });
+            $("#FollowUp").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "FollowUp" });
+            });
+            $("#Lab").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Labs" });
+            });
+            $("#Diet").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Diet" });
+            });
+            $("#Other").on("click", function () {
+                $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                    { viewName: "Other" });
+            });
+            //
+            //$('.Treatment').click(function () {
+
+            //    $("#ShowForm").load("/SetUp/GetView",
+            //        { viewName: "Medicine" });
+            //});
+        });
+            @*$(document).ready(function () {
+               @Url.Content("~/Content/assets/js/pages/components/charts/morris-charts.js")
+            });*@
+    </script>
+    <script>
+
+        /*! Split.js - v1.6.2 */
+        !function (e, t) { "object" == typeof exports && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define(t) : (e = e || self).Split = t() }(this, (function () { "use strict"; var e = "undefined" != typeof window ? window : null, t = null === e, n = t ? void 0 : e.document, i = function () { return !1 }, r = t ? "calc" : ["", "-webkit-", "-moz-", "-o-"].filter((function (e) { var t = n.createElement("div"); return t.style.cssText = "width:" + e + "calc(9px)", !!t.style.length })).shift() + "calc", s = function (e) { return "string" == typeof e || e instanceof String }, o = function (e) { if (s(e)) { var t = n.querySelector(e); if (!t) throw new Error("Selector " + e + " did not match a DOM element"); return t } return e }, a = function (e, t, n) { var i = e[t]; return void 0 !== i ? i : n }, u = function (e, t, n, i) { if (t) { if ("end" === i) return 0; if ("center" === i) return e / 2 } else if (n) { if ("start" === i) return 0; if ("center" === i) return e / 2 } return e }, l = function (e, t) { var i = n.createElement("div"); return i.className = "gutter gutter-" + t, i }, c = function (e, t, n) { var i = {}; return s(t) ? i[e] = t : i[e] = r + "(" + t + "% - " + n + "px)", i }, h = function (e, t) { var n; return (n = {})[e] = t + "px", n }; return function (r, s) { if (void 0 === s && (s = {}), t) return {}; var d, f, v, m, g, p, y = r; Array.from && (y = Array.from(y)); var z = o(y[0]).parentNode, b = getComputedStyle ? getComputedStyle(z) : null, E = b ? b.flexDirection : null, S = a(s, "sizes") || y.map((function () { return 100 / y.length })), L = a(s, "minSize", 100), _ = Array.isArray(L) ? L : y.map((function () { return L })), w = a(s, "expandToMin", !1), k = a(s, "gutterSize", 10), x = a(s, "gutterAlign", "center"), C = a(s, "snapOffset", 30), M = a(s, "dragInterval", 1), U = a(s, "direction", "horizontal"), O = a(s, "cursor", "horizontal" === U ? "col-resize" : "row-resize"), D = a(s, "gutter", l), A = a(s, "elementStyle", c), B = a(s, "gutterStyle", h); function j(e, t, n, i) { var r = A(d, t, n, i); Object.keys(r).forEach((function (t) { e.style[t] = r[t] })) } function F() { return p.map((function (e) { return e.size })) } function R(e) { return "touches" in e ? e.touches[0][f] : e[f] } function T(e) { var t = p[this.a], n = p[this.b], i = t.size + n.size; t.size = e / this.size * i, n.size = i - e / this.size * i, j(t.element, t.size, this._b, t.i), j(n.element, n.size, this._c, n.i) } function N(e) { var t, n = p[this.a], r = p[this.b]; this.dragging && (t = R(e) - this.start + (this._b - this.dragOffset), M > 1 && (t = Math.round(t / M) * M), t <= n.minSize + C + this._b ? t = n.minSize + this._b : t >= this.size - (r.minSize + C + this._c) && (t = this.size - (r.minSize + this._c)), T.call(this, t), a(s, "onDrag", i)(F())) } function q() { var e = p[this.a].element, t = p[this.b].element, n = e.getBoundingClientRect(), i = t.getBoundingClientRect(); this.size = n[d] + i[d] + this._b + this._c, this.start = n[v], this.end = n[m] } function H(e) { var t = function (e) { if (!getComputedStyle) return null; var t = getComputedStyle(e); if (!t) return null; var n = e[g]; return 0 === n ? null : n -= "horizontal" === U ? parseFloat(t.paddingLeft) + parseFloat(t.paddingRight) : parseFloat(t.paddingTop) + parseFloat(t.paddingBottom) }(z); if (null === t) return e; if (_.reduce((function (e, t) { return e + t }), 0) > t) return e; var n = 0, i = [], r = e.map((function (r, s) { var o = t * r / 100, a = u(k, 0 === s, s === e.length - 1, x), l = _[s] + a; return o < l ? (n += l - o, i.push(0), l) : (i.push(o - l), o) })); return 0 === n ? e : r.map((function (e, r) { var s = e; if (n > 0 && i[r] - n > 0) { var o = Math.min(n, i[r] - n); n -= o, s = e - o } return s / t * 100 })) } function I() { var t = p[this.a].element, r = p[this.b].element; this.dragging && a(s, "onDragEnd", i)(F()), this.dragging = !1, e.removeEventListener("mouseup", this.stop), e.removeEventListener("touchend", this.stop), e.removeEventListener("touchcancel", this.stop), e.removeEventListener("mousemove", this.move), e.removeEventListener("touchmove", this.move), this.stop = null, this.move = null, t.removeEventListener("selectstart", i), t.removeEventListener("dragstart", i), r.removeEventListener("selectstart", i), r.removeEventListener("dragstart", i), t.style.userSelect = "", t.style.webkitUserSelect = "", t.style.MozUserSelect = "", t.style.pointerEvents = "", r.style.userSelect = "", r.style.webkitUserSelect = "", r.style.MozUserSelect = "", r.style.pointerEvents = "", this.gutter.style.cursor = "", this.parent.style.cursor = "", n.body.style.cursor = "" } function W(t) { if (!("button" in t) || 0 === t.button) { var r = p[this.a].element, o = p[this.b].element; this.dragging || a(s, "onDragStart", i)(F()), t.preventDefault(), this.dragging = !0, this.move = N.bind(this), this.stop = I.bind(this), e.addEventListener("mouseup", this.stop), e.addEventListener("touchend", this.stop), e.addEventListener("touchcancel", this.stop), e.addEventListener("mousemove", this.move), e.addEventListener("touchmove", this.move), r.addEventListener("selectstart", i), r.addEventListener("dragstart", i), o.addEventListener("selectstart", i), o.addEventListener("dragstart", i), r.style.userSelect = "none", r.style.webkitUserSelect = "none", r.style.MozUserSelect = "none", r.style.pointerEvents = "none", o.style.userSelect = "none", o.style.webkitUserSelect = "none", o.style.MozUserSelect = "none", o.style.pointerEvents = "none", this.gutter.style.cursor = O, this.parent.style.cursor = O, n.body.style.cursor = O, q.call(this), this.dragOffset = R(t) - this.end } } "horizontal" === U ? (d = "width", f = "clientX", v = "left", m = "right", g = "clientWidth") : "vertical" === U && (d = "height", f = "clientY", v = "top", m = "bottom", g = "clientHeight"), S = H(S); var X = []; function Y(e) { var t = e.i === X.length, n = t ? X[e.i - 1] : X[e.i]; q.call(n); var i = t ? n.size - e.minSize - n._c : e.minSize + n._b; T.call(n, i) } return (p = y.map((function (e, t) { var n, i = { element: o(e), size: S[t], minSize: _[t], i: t }; if (t > 0 && ((n = { a: t - 1, b: t, dragging: !1, direction: U, parent: z })._b = u(k, t - 1 == 0, !1, x), n._c = u(k, !1, t === y.length - 1, x), "row-reverse" === E || "column-reverse" === E)) { var r = n.a; n.a = n.b, n.b = r } if (t > 0) { var s = D(t, U, i.element); !function (e, t, n) { var i = B(d, t, n); Object.keys(i).forEach((function (t) { e.style[t] = i[t] })) }(s, k, t), n._a = W.bind(n), s.addEventListener("mousedown", n._a), s.addEventListener("touchstart", n._a), z.insertBefore(s, i.element), n.gutter = s } return j(i.element, i.size, u(k, 0 === t, t === y.length - 1, x), t), t > 0 && X.push(n), i }))).forEach((function (e) { var t = e.element.getBoundingClientRect()[d]; t < e.minSize && (w ? Y(e) : e.minSize = t) })), { setSizes: function (e) { var t = H(e); t.forEach((function (e, n) { if (n > 0) { var i = X[n - 1], r = p[i.a], s = p[i.b]; r.size = t[n - 1], s.size = e, j(r.element, r.size, i._b, r.i), j(s.element, s.size, i._c, s.i) } })) }, getSizes: F, collapse: function (e) { Y(p[e]) }, destroy: function (e, t) { X.forEach((function (n) { if (!0 !== t ? n.parent.removeChild(n.gutter) : (n.gutter.removeEventListener("mousedown", n._a), n.gutter.removeEventListener("touchstart", n._a)), !0 !== e) { var i = A(d, n.a.size, n._b); Object.keys(i).forEach((function (e) { p[n.a].element.style[e] = "", p[n.b].element.style[e] = "" })) } })) }, parent: z, pairs: X } } }));
+
+    </script>
+    <script>
+        
+        Split(['.c', '.d'], {
+            gutterSize: 15,
+            sizes: [70, 30],
+            minSize: [246, 200,]
+        });
+    </script>
+
+
+}
+<link href="~/Scripts/Tree_Shield/all.min.css" rel="stylesheet" />
+<script src="~/Scripts/Tree_Shield/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/Tree_Shield/shieldui-all.min.js"></script>
+
+
+@using (Html.BeginForm())
+{
+    <!-- begin:: Content Head -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title"><span><img style="width:30px" class="mr-3" src="~/Content/assets/media/med360/patient.png"></span>Patient Encounter</h3>
+
+        </div>
+        <div class="kt-subheader__toolbar">
+            <button type="button" class="btn btn-primary"><span><i class="fa fa-pause"></i>Hold</span></button>
+            <button type="button" class="btn btn-danger"><span><i class="fa fa-stop"></i>End</span></button>
+            <button type="button" class="btn btn-info"><span><i class="fa fa-eye"></i>View</span></button>
+        </div>
+    </div>
+    <!-- end:: Content Head -->
+
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+        <div class="kt-portlet">
+            <div style="background-color: #fff; height:auto; padding:5px;">
+                <div>
+                    <h3>
+                        <label>Patient: Ali Raza  &nbsp;&nbsp; 25 years &nbsp;&nbsp; Male   </label>
+                    </h3>
+                </div>
+            </div>
+            <div class="kt-portlet__body custom-form-n">
+                <ul class="nav nav-pills nav-fill form-tab-svg-change" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#kt_Encounter" role="tab">
+                            <span><img src="~/Content/assets/media/med360/treatment.svg" class="img2svg encounter-tabs-svg"></span>Encounter
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#kt_Results" role="tab">
+                            <span><img src="~/Content/assets/media/med360/reports.svg" height="25" class="img2svg encounter-tabs-svg"></span>Results
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#kt_Orders" role="tab">
+                            <span><img src="~/Content/assets/media/med360/order.svg" class="img2svg encounter-tabs-svg"></span>Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#kt_Notes" role="tab">
+                            <span><img src="~/Content/assets/media/med360/doctor notes.svg" class="img2svg encounter-tabs-svg"></span>Notes
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="kt_Encounter" role="tabpanel">
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <div class="kt-portlet" style="">
+                                    <div class="kt-portlet__head kt-portlet__head--fit" style="background: #9fa8a3;">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title" style="color: white;">
+                                                Chief Complaint
+                                            </h3>
+
+
+                                        </div>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <form class="kt-form">
+                                        <div class="kt-portlet__body scoll-table-y">
+                                            <div class="form-group custom-form-group">
+                                                <label>1. Headache</label>
+
+                                            </div>
+                                            <div class="form-group custom-form-group">
+
+                                                <label>2. Difficulty Breathing</label>
+                                            </div>
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="kt-portlet" style="">
+                                    <div class="kt-portlet__head kt-portlet__head--fit" style="background: #c39ea0;">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title" style="color: white;">
+                                                Allergies
+                                            </h3>
+                                        </div>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                        </div>
+                                    </div>
+                                    <form class="kt-form">
+                                        <div class="kt-portlet__body scoll-table-y">
+                                            <div class="form-group custom-form-group">
+                                                <label>1. Seasonal Pollen</label>
+
+                                                @*<select multiple="" class="form-control" id="exampleSelect2">
+                                <option>1. Seasonal Pollen</option>
+                                <option>2. Food Allergy-Peanuts</option>
+                            </select>*@
+                                            </div>
+                                            <div class="form-group custom-form-group">
+
+                                                <label>2. Food Allergy-Peanuts</label>
+                                                @*<select multiple="" class="form-control" id="exampleSelect2">
+                                <option>1. Seasonal Pollen</option>
+                                <option>2. Food Allergy-Peanuts</option>
+                            </select>*@
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="kt-portlet" style="height: 297px;">
+                                            <div class="kt-portlet__head kt-portlet__head--fit" style="background: #c1c1c1;">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        Vitals
+                                                    </h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form">
+                                                <div class="kt-portlet__body">
+
+                                                    <div class="d-flex">
+                                                        <button class="btn btn-default">WT (lbs)</button>
+                                                        <button class="btn btn-default">HGT (in)</button>
+                                                        <button class="btn btn-default">TEMP (F)</button>
+                                                        <button class="btn btn-info">HR</button>
+                                                        <button class="btn btn-default">BP</button>
+                                                        <button class="btn btn-default">Sp (o2)</button>
+                                                        <button class="btn btn-default">RR</button>
+
+                                                    </div>
+                                                    <div id="kt_morris_3" class="mainPatientEncounter">
+
+                                                    </div>
+                                                    <div class="form-group form-group-sm d-flex inputvaule-custom align-items-end">
+
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="WIb">WT (lbs)</label>
+                                                            <input type="text" id="WIb" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="HGin">HGT (in)</label>
+                                                            <input type="text" id="HGin" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="TEF">TEMP (F)</label>
+                                                            <input type="text" id="TEF" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="HR">HR</label>
+                                                            <input type="text" id="HR" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="BP">BP</label>
+                                                            <input type="text" id="BP" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="SpO">Sp (o2)</label>
+                                                            <input type="text" id="SpO" class="form-control form-control-sm" />
+                                                        </div>
+
+                                                        <div class="mr-1 max-width-30">
+                                                            <label for="RR">RR</label>
+                                                            <input type="text" id="RR" class="form-control form-control-sm" />
+                                                        </div>
+
+                                                        <button type="button" class="btn btn-primary custom-primery">Add</button>
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="kt-portlet">
+                                            <div class="kt-portlet__head kt-portlet__head--fit" style="        background: #abd7eb;">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        Lab Higlights
+                                                    </h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form">
+                                                <div class="kt-portlet__body">
+                                                    <div class="form-group form-group-sm lab-highlight-scoll-y">
+                                                        <table class="table table-striped table-bordered table-hover table-primary:hover custom-table-n">
+                                                            <thead class="">
+                                                                <tr>
+                                                                    <td>Date</td>
+                                                                    <td>HGB</td>
+                                                                    <td>WBC</td>
+                                                                    <td>HbA1c</td>
+                                                                    <td>Sodium</td>
+                                                                    <td align="center">Action</td>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>05-06-2020</td>
+                                                                    <td>9 /dl</td>
+                                                                    <td>5600 /µl</td>
+                                                                    <td>100mg /dl</td>
+                                                                    <td>1 + o</td>
+                                                                    <td align="center"><a class="btn btn-default btn-icon"><i class="fa fa-pencil"></i></a></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>03-06-2020</td>
+                                                                    <td>9 /dl</td>
+                                                                    <td>5600 /µl</td>
+                                                                    <td>100mg /dl</td>
+                                                                    <td>1 + o</td>
+                                                                    <td align="center"><a class="btn btn-default btn-icon"><i class="fa fa-pencil"></i></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>10-04-2020</td>
+                                                                    <td>9 /dl</td>
+                                                                    <td>5600 /µl</td>
+                                                                    <td>100mg /dl</td>
+                                                                    <td>1 + o</td>
+                                                                    <td align="center"><a class="btn btn-default btn-icon"><i class="fa fa-pencil"></i></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>10-04-2020</td>
+                                                                    <td>9 /dl</td>
+                                                                    <td>5600 /µl</td>
+                                                                    <td>100mg /dl</td>
+                                                                    <td>-</td>
+                                                                    <td align="center"><a class="btn btn-default btn-icon"><i class="fa fa-pencil"></i></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>07-03-2020</td>
+                                                                    <td>9 /dl</td>
+                                                                    <td>5600 /µl</td>
+                                                                    <td>100mg /dl</td>
+                                                                    <td>-</td>
+                                                                    <td align="center"><a class="btn btn-default btn-icon"><i class="fa fa-pencil"></i></a></td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+
+
+                                                    <div class="form-group form-group-sm row mx-1 inputvaule-custom align-items-end">
+
+                                                        <div class="col-md-2">
+                                                            <label for="LHGB">HGB</label>
+                                                            <input type="text" id="LHGB" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="LWBC">WBC</label>
+                                                            <input type="text" id="LWBC" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="LHBA1">HbA1</label>
+                                                            <input type="text" id="LHBA1" class="form-control form-control-sm" />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="Sodium">Sodium</label>
+                                                            <input type="text" id="Sodium" class="form-control form-control-sm" />
+                                                        </div>
+
+                                                        <button type="button" class="btn btn-primary custom-primery">Add</button>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="kt-portlet">
+                                    <div class="kt-portlet__head kt-portlet__head--fit" style="        background: #a2b5cd;">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title" style="color: white;">
+                                                Encounters
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <form class="kt-form">
+                                        <div class="kt-portlet__body">
+                                            <div class="table-responsive encounters-table-scoll-y form-scoll-y">
+                                                <table class="table table-hover encounters-table-custom">
+                                                    <thead class="">
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Encounter Type</th>
+                                                            <th>Provider</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>May 15 2018</td>
+                                                            <td>Follow-Up</td>
+                                                            <td>Dr. Fakhar</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>June 11 2019</td>
+                                                            <td>Consultation</td>
+                                                            <td>Dr. Fakhar</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>May 10 2020</td>
+                                                            <td>Follow-Up</td>
+                                                            <td>Dr. Fakhar</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Feb 10 2020</td>
+                                                            <td>Follow-Up</td>
+                                                            <td>Dr. Fakhar</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>July 10 2020</td>
+                                                            <td>Consultation</td>
+                                                            <td>Dr. Fakhar</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="kt-portlet" style="">
+                                            <div class="kt-portlet__head kt-portlet__head--fit" style="        background: #4ea1d3;">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        Medications History
+                                                    </h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form form-scoll-y">
+                                                <div class="kt-portlet__body">
+
+                                                    <div class="form-group mb-2">
+
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-heading-custom">Active Meds </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td>1. FLIXONASE NASAL SPRAY 2 Puffs</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2. SERETIDE 2 Puffs</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3. Lumark</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4. Kestine 1 + 0 + 1</td>
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-heading-custom">Previous Meds </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td>1. FLIXONASE NASAL SPRAY 2 Puffs</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2. SERETIDE 2 Puffs</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3. Lumark</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4. Kestine 1 + 0 + 1</td>
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="kt-portlet">
+                                            <div class="kt-portlet__head kt-portlet__head--fit">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        History
+                                                    </h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form form-scoll-y">
+                                                <div class="kt-portlet__body">
+                                                    <div class="form-group custom-form-group mb-3">
+                                                        <h5 class="table-heading-custom mb-2">Past Medical History </h5>
+                                                        <label>PH:</label>
+                                                        <label>++++ CAD</label>
+                                                    </div>
+                                                    <div class="form-group custom-form-group">
+                                                        <h5 class="table-heading-custom mb-2">Family History </h5>
+                                                        <label>Father: Severe asthma</label>
+                                                        <label>NKDA</label>
+                                                    </div>
+                                                    <div class="form-group custom-form-group mb-3">
+                                                        <h5 class="table-heading-custom mb-2">Social History </h5>
+
+
+                                                    </div>
+
+                                                    <div class="form-group custom-form-group mb-3">
+                                                        <h5 class="table-heading-custom mb-2">Surgical History </h5>
+
+                                                    </div>
+                                                    <div class="form-group custom-form-group mb-3">
+                                                        <h5 class="table-heading-custom mb-2">Occupational History </h5>
+
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="kt-portlet" style="height: 15.25rem;">
+                                            <div class="kt-portlet__head kt-portlet__head--fit" style="        background: #6474e5;">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        Review of Systems
+                                                    </h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form">
+                                                <div class="kt-portlet__body">
+
+                                                    @*<table class="reviewofSystems">
+                                    <tbody>
+                                        @foreach (var item in @ViewBag.SystemReview)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @(item[0] + ". " + item[1])
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>*@
+
+                                                    <table class="table encounters-table-custom mb-1">
+                                                        <thead>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <h5 class="table-heading-custom"> </h5>
+                                                                </td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+
+                                                            <tr>
+                                                                <td>1. Respiratory</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>2. Shortness of Breath</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>3. Dry Cough</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>4. Chest pain</td>
+
+                                                            </tr>
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="kt-portlet" style="height: 29rem;">
+                                            <div class="kt-portlet__head kt-portlet__head--fit">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        Active Problem List
+                                                    </h3>
+                                                </div>
+                                                <div class="kt-portlet__head-toolbar">
+                                                    <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form" style="height: 25rem;">
+                                                @*<div class="kt-portlet__body">
+                                <div class="form-group custom-form-group">
+                                    <label>1. Asthma</label>
+                                </div>
+                                <div class="form-group custom-form-group">
+                                    <label>2. COPD</label>
+                                </div>
+
+
+                            </div>*@
+                                                <table class="table encounters-table-custom mb-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <h5 class="table-heading-custom"> </h5>
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        <tr>
+                                                            <td>1. Asthma</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>2. COPD</td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                            <div class="kt-portlet__foot kt-portlet__foot--sm ">
+                                                <div class="form-group custom-form-group">
+
+                                                    <div class="kt-input-icon kt-input-icon--right">
+                                                        <input type="text" class="form-control custom-input-control" placeholder="Search..." id="generalSearch">
+                                                        <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                            <span><i class="la la-search"></i></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-form__actions">
+                                                    <div class="row">
+                                                        <div class="col-lg-2"></div>
+                                                        <div class="col-lg-10">
+                                                            <button type="reset" class="btn btn-success custom-primery">Add</button>
+                                                            <button type="reset" class="btn btn-secondary">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="d-flex">
+                                    <div class="c">
+                                        
+                                            <div class="">
+                                                <div class="kt-portlet" style="height: 45rem;">
+                                                    <div class="kt-portlet__head kt-portlet__head--fit" style="        background: #4f4f51;">
+                                                        <div class="kt-portlet__head-label">
+                                                            <h3 class="kt-portlet__head-title" style="color: white;">
+                                                                Current Encounter Notes
+                                                            </h3>
+                                                        </div>
+                                                        <div class="kt-portlet__head-toolbar">
+                                                            <a class="btn btn-icon"><i class="fa fa-pencil"></i></a>
+                                                            <a class="btn btn-icon"><i class="fa fa-bars"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <form class="kt-form currentEncounterNotes-scoll-y">
+                                                        <div class="kt-portlet__body">
+                                                            <div class="form-group">
+
+                                                                <div class="form-group mb-2">
+
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-heading-custom">Chief Complaint </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+
+
+                                                                            <tr>
+                                                                                <td>1. Headache</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>2. Frequent Cough</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>3. Breathing Problems</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>4. Fever</td>
+
+                                                                            </tr>
+
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                                                <div class="form-group custom-form-group mb-2">
+
+                                                                    <h5 class="table-heading-custom">Patient History</h5>
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-subheading-custom">Present Illness </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+
+
+                                                                            <tr>
+                                                                                <td>1. Has asthma since 4 year</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>Condition has gotten worse in last 1 year</td>
+                                                                            </tr>
+
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-subheading-custom">Medical History </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-subheading-custom">Family History </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-subheading-custom">Social History </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-subheading-custom">Surgical History </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                    <table class="table encounters-table-custom mb-1">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    <h5 class="table-subheading-custom">Occupational History </h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                    </table>
+
+                                                                </div>
+                                                                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+
+                                                                @*<div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Medical History</h5>
+                                                                </div>
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Family History</h5>
+                                                                </div>
+
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Social History</h5>
+                                                                </div>
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Surgical History</h5>
+                                                                </div>
+
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Occupational History</h5>
+                                                                </div>*@
+                                                                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Exams & Investigation physical Exams</h5>
+                                                                </div>
+                                                                <br />
+                                                                <br />
+                                                                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Assessment</h5>
+                                                                </div>
+                                                                <br />
+                                                                <br />
+                                                                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Plans and Recommendations</h5>
+                                                                </div>
+
+                                                                <div class="form-group custom-form-group">
+                                                                    <h5 class="table-heading-custom">Medication</h5>
+                                                                </div>
+
+                                                                <div class="form-group custom-form-group mb-2">
+                                                                    <h5 class="table-heading-custom">Labs</h5>
+                                                                </div>
+
+                                                                <br />
+                                                                <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="d">
+                                        <div class="kt-portlet" style="height: 45rem;">
+                                            <div class="kt-portlet__head kt-portlet__head--fit">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title" style="color: white;">
+                                                        Previous Notes
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <form class="kt-form currentEncounterNotes-scoll-y">
+                                                <div class="kt-portlet__body">
+                                                    <div class="form-group">
+
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-heading-custom">Chief Complaint </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+
+                                                                <tr>
+                                                                    <td>1. Headache</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24" /></a></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2. Frequent Cough</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24" /></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3. Breathing Problems</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24" /></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4. Fever</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24" /></a></td>
+                                                                </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+                                                    <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                                    <div class="form-group custom-form-group mb-2">
+
+                                                        <h5 class="table-heading-custom">Patient History</h5>
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-subheading-custom">Present Illness </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td>1. Has asthma since 4 year</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Condition has gotten worse in last 1 year</td>
+                                                                    <td></td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-subheading-custom">Medical History </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td>1. Has asthma since 4 year</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2. Frequent Cough</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3. Breathing Problems</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4. Fever</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-subheading-custom">Family History </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td>1. Family History Asthma, Mother has asthma</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2. Long Family History of Diabetes, Four Family Member has Diabetes</td>
+                                                                    <td class="text-right"><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-subheading-custom">Social History </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-subheading-custom">Surgical History </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                        <table class="table encounters-table-custom mb-1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <h5 class="table-subheading-custom">Occupational History </h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                                    <div class="form-group">
+                                                        <table class="reviewofSystems">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><h5 class="table-heading-custom">Exams & Investigation Physical Exams</h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td> <h5 class="table-heading-custom">Assessments</h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><h5 class="table-heading-custom">Plan and Recommendation</h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><h5 class="table-heading-custom">Medication Labs</h5></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="kt_Results" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet kt-portlet--tab" style="height: 56rem">
+
+                                    <!--begin::Tree Section-->
+                                    <div class="row">
+                                        <div class=" col-md-12 mt-4">
+                                            <div class="col-md-12">
+                                                <div class="form-group m-form__group align-items-center">
+                                                    <div class="input-group">
+                                                        <input name="filterText" autoFocus
+                                                               class="form-control m-input"
+                                                               type="text">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-info" type="submit">
+                                                                <i class="la la-filter" style="color:white"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div id="treeview"></div>
+                                        </div>
+                                        <script type="text/javascript">
+                    jQuery(function ($) {
+                        function onCheck() {
+                            // find all LI elements in the treeview and determine how many are checked
+                            var checkedCount = $("#treeview").swidget("TreeView").element.find("li").filter(function () {
+                                return $("#treeview").swidget("TreeView").checked($(this));
+                            }).length;
+                            $("#checkedCount").html(checkedCount + " items checked");
+                        }
+                        $("#treeview").shieldTreeView({
+                            checkboxes: {
+                                enabled: true,
+                                children: true
+                            },
+                            events: {
+                                check: onCheck
+                            },
+                            dataSource: {
+                                data: [
+                                    {
+                                        text: "All Results",
+                                        iconUrl: '@Url.Content( "~/Content/img/file/folder_Green.png")',
+                                        expanded: true,
+                                        items: [
+                                            {
+                                                text: "Pathology",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "Blood",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        expanded: true,
+                                                        items: [
+                                                            {
+                                                                text: "CBC",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                                expanded: true,
+                                                                items: [
+
+                                                                    {
+                                                                        text: "02-03-2020",
+                                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                                    },
+                                                                    {
+                                                                        text: "05-03-2020",
+                                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                text: "Protime",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+
+                                                            },
+                                                            {
+                                                                text: "Lipid Panal",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                            }
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        text: "Urine",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                        //expanded: false,
+                                                        //items: [
+                                                        //    {
+                                                        //        text: "license.pdf",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_pdf.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "privacy.pdf",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_pdf.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "report.xls",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_xls.png"
+                                                        //    }
+                                                        //]
+                                                    },
+                                                    {
+                                                        text: "Stool",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        //expanded: false,
+                                                        //items: [
+                                                        //    {
+                                                        //        text: "logo.jpg",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_jpeg.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "theme.css",
+                                                        //        iconUrl: "~/Content/img/file/file_extension_txt.png"
+                                                        //    }
+                                                        //]
+                                                    },
+                                                    {
+                                                        text: "Tissues",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                text: "Radiology",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "CT/CAT Scan",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Foloroscopy",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "MRI/MRA",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Mammogropgy",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Pet Scan",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Nuclear",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        expended: true,
+                                                        items: [
+                                                            {
+                                                                text: "Bone",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            },
+                                                            {
+                                                                text: "Thyroid",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            },
+                                                            {
+                                                                text: "Thalium Cardioc Stress",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            }
+
+                                                        ]
+                                                    },
+                                                    {
+                                                        text: "Ultrasound",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Xray",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        expended: true,
+                                                        items: [
+                                                            {
+                                                                text: "05-05-2019",
+                                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                            }
+                                                        ]
+                                                    }
+
+                                                ]
+                                            },
+                                            {
+                                                text: "Microbiology",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")',
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "Aspirate for AFB",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Chlamydia",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "Ear Culture/Sensitivity",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        });
+                        onCheck();
+                    });
+                                        </script>
+                                    </div>
+
+                                    <style>
+                                        .container {
+                                            max-width: 400px;
+                                            margin: auto;
+                                            overflow: hidden;
+                                        }
+                                    </style>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;<span id="checkedCount"></span></p>
+                                    <!--end::Tree Section-->
+                                </div>
+                            </div>
+                            <!--end::Portlet-->
+
+                            <div class="col-md-4">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet">
+                                    <div class="kt-portlet__body">
+                                        @*nav nav-tabs nav-fill*@
+                                        @*<ul class="nav nav-tabs  nav-tabs-line " role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#EditLabHighlights_3">Edit Lab Highlights </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link disabled " data-toggle="tab" href="#ReportViewer_4"></a>
+                                                </li>
+                                            </ul>*@
+                                        <div class="tab-content" style="overflow:auto; height:720px">
+                                            <div class="tab-pane active" id="EditLabHighlights_3" role="tabpanel">
+                                                @*<div class="kt-portlet__head kt-portlet__head--lg">
+                                                        <div class="kt-portlet__head-label">
+                                                            <h3 class="kt-portlet__head-title"></h3>
+                                                        </div>
+                                                        <div class="kt-portlet__head-toolbar">
+                                                            <div class="kt-portlet__head-wrapper">
+                                                                <div class="kt-portlet__head-actions">
+
+                                                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" data-target="" style="font-size: 10px "><i class="fa fa-plus"></i>New Lab Order</button>
+                                                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" style="font-size: 10px "><i class="fa fa-eye"></i>Report View</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+                                                <div class="container">
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                    <div class="btn-group" role="group" aria-label="First group">
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:blue"></i></button>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                                        <a href="~/image/blood test.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <img class="card-img-top" src="~/image/blood test.jpg" alt="Report" style="width:100%">
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                    <div class="btn-group" role="group" aria-label="First group">
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:darkgreen"></i></button>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                                        <a href="~/image/x-ray.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <img class="card-img-top" src="~/image/x-ray.jpg" alt="x-ray" style="width:100%">
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                    <div class="btn-group" role="group" aria-label="First group">
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:darkgreen"></i></button>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                                        <a href="~/image/x-ray.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <img class="card-img-top" src="~/image/x-ray.jpg" alt="x-ray" style="width:100%">
+                                                    </div>
+                                                    <br>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="la la-print"></i> Print</button>
+                                        <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="fa fa-eye"></i> View</button>
+                                        <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="fa fa-eye"></i> View</button>
+                                    </div>
+                                </div>
+
+                                <!--end::Portlet-->
+                            </div>
+
+                            <div class="col-md-4">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet">
+                                    <div class="kt-portlet__body">
+                                        @*nav nav-tabs nav-fill*@
+                                        @*<ul class="nav nav-tabs  nav-tabs-line " role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#EditLabHighlights_3">Edit Lab Highlights </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link disabled " data-toggle="tab" href="#ReportViewer_4"></a>
+                                                </li>
+                                            </ul>*@
+                                        <div class="tab-content" style="overflow:auto; height:720px">
+                                            <div class="tab-pane active" id="EditLabHighlights_3" role="tabpanel">
+                                                @*<div class="kt-portlet__head kt-portlet__head--lg">
+                                                        <div class="kt-portlet__head-label">
+                                                            <h3 class="kt-portlet__head-title"></h3>
+                                                        </div>
+                                                        <div class="kt-portlet__head-toolbar">
+                                                            <div class="kt-portlet__head-wrapper">
+                                                                <div class="kt-portlet__head-actions">
+
+                                                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" data-target="" style="font-size: 10px "><i class="fa fa-plus"></i>New Lab Order</button>
+                                                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" style="font-size: 10px "><i class="fa fa-eye"></i>Report View</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+                                                <div class="container">
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                    <div class="btn-group" role="group" aria-label="First group">
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:blue"></i></button>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                                        <a href="~/image/blood test.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <img class="card-img-top" src="~/image/blood test.jpg" alt="Report" style="width:100%">
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                    <div class="btn-group" role="group" aria-label="First group">
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:darkgreen"></i></button>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                                        <a href="~/image/x-ray.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <img class="card-img-top" src="~/image/x-ray.jpg" alt="x-ray" style="width:100%">
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="card">
+
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                    <div class="btn-group" role="group" aria-label="First group">
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-filter" style="color:darkgreen"></i></button>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="la la-paperclip" style="color:green"></i></button>
+                                                                        <a href="~/image/x-ray.jpg" style="color:green" class="btn btn-outline-hover-danger btn-sm btn-icon" download><i class="la la-floppy-o" style="color:blue"></i></a>
+                                                                        <button type="button" class="btn btn-outline-hover-danger btn-sm btn-icon"><i class="fa fa-trash" style="color:red"></i></button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <img class="card-img-top" src="~/image/x-ray.jpg" alt="x-ray" style="width:100%">
+                                                    </div>
+                                                    <br>
+                                                </div>
+
+                                            </div>
+                                            @*<div class="tab-pane " id="ReportViewer_4" role="tabpanel">
+                                                    <!--begin::Portlet  -->
+                                                    <!--begin::Section  -->
+                                                    <div id="kt_content">
+                                                        <div class="kt-portlet kt-portlet--mobile">
+                                                            <div class="kt-portlet__head kt-portlet__head--lg">
+                                                                <div class="kt-portlet__head-label">
+
+                                                                    <h3 class="kt-portlet__head-title"></h3>
+                                                                </div>
+                                                                <div class="kt-portlet__head-toolbar">
+                                                                    <div class="kt-portlet__head-wrapper">
+                                                                        <div class="kt-portlet__head-actions">
+
+                                                                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" data-target="#myModal">Add New</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="kt-portlet__body scrollmenu" style="overflow: auto;">
+
+                                                                <!--begin: Datatable -->
+                                                                <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Date</th>
+                                                                            <th>HGB</th>
+                                                                            <th>WBC</th>
+                                                                            <th>HbA1e</th>
+                                                                            <th>Sodium</th>
+                                                                            <th>Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>3/6/2020</td>
+                                                                            <td>8/dl</td>
+                                                                            <td>3600/ul</td>
+                                                                            <td>100mg/dl</td>
+                                                                            <td>145</td>
+                                                                            <td nowrap></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>4/6/2020</td>
+                                                                            <td>9/dl</td>
+                                                                            <td>3600/ul</td>
+                                                                            <td>100mg/dl</td>
+                                                                            <td>140</td>
+                                                                            <td nowrap></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>5/6/2020</td>
+                                                                            <td>10/dl</td>
+                                                                            <td>3600/ul</td>
+                                                                            <td>100mg/dl</td>
+                                                                            <td>130</td>
+                                                                            <td nowrap></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+
+                                                                <!--end: Datatable -->
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" class="btn btn-outline-hover-brand btn-sm"><i class="la la-print"></i> Print</button>
+                                                            <button type="button" class="btn btn-outline-hover-danger btn-sm"><i class="fa fa-search"></i> View</button>
+                                                            <button type="button" class="btn btn-outline-hover-brand btn-sm"><i class="fa fa-search"></i> View</button>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--end::Section-->
+                                                    <!-- --------Modal-------- -->
+                                                    <div id="myModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+                                                        <div class="modal-dialog modal-lg">
+
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/lab test.png" class="mr-3" style="width: 30px;"></span>Lab Highlights Dual View</h3>
+                                                                    <button type="button" class="close" data-dismiss="modal"></button>
+
+                                                                </div>
+                                                                <div class="modal-body">
+
+                                                                    <div class="form-group row">
+                                                                        <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                                                                        <div class="col-10">
+                                                                            <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="example-text-input" class="col-2 col-form-label">Type</label>
+                                                                        <div class="col-10">
+                                                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Type" id="example-text-input">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="example-value-input" class="col-2 col-form-label">Value</label>
+                                                                        <div class="col-10">
+                                                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Value" id="example-value-input">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="reset" class="btn btn-label"><i class="fa fa-save"> Save</i></button>
+                                                                    <button type="reset" class="btn btn-outline-hover-danger"><i class="fa fa-times"> Cancel</i></button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Portlet-->
+                                                </div>*@
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="la la-print"></i> Print</button>
+                                        <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="fa fa-eye"></i> View</button>
+                                        <button type="button" class="btn btn-brand btn-elevate btn-icon-md btn-sm"><i class="fa fa-eye"></i> View</button>
+                                    </div>
+                                </div>
+
+                                <!--end::Portlet-->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="kt_Orders" role="tabpanel">
+
+                        <div class="col-md-12">
+                            <div class="form-group" style="text-align:center;">
+                                <a class="btn btn-info" id="Medicine" role="button" style="color:white; padding:5px;"><i class="fa fa-heartbeat"></i>Medicine</a>
+                                <a class="btn btn-info" id="Lab" role="button" style="color:white;padding:5px;"><i class="fa fa-flask"></i>Labs</a>
+                                <a class="btn btn-info" id="Imaging" role="button" style="color:white;padding:5px;"><i class="fa fa-file-image"></i>Imaging</a>
+                                <a class="btn btn-info" id="Treatment" role="button" style="color:white;padding:5px;"><i class="fas fa-capsules"></i>Treatment</a>
+                                <a class="btn btn-info" id="Procedure" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fas fa-procedures"></i>Procedures</a>
+                                <a class="btn btn-info" id="Diet" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fas fa-cheese"></i>Diet</a>
+                                <a class="btn btn-info" id="Exercise" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fas fa-running"></i> Exercise</a>
+                                <a class="btn btn-info" id="FollowUp" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fa fa-calendar-check-o"></i>Follow-Up</a>
+                                <a class="btn btn-info" id="Referral" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fa fa-user-plus"></i>Referrals</a>
+                                <a class="btn btn-info" id="PatientEducation" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fa fa-file"></i>Patient Education</a>
+                                <a class="btn btn-info" id="Other" role="button" style="        color: white;
+        padding: 5px;
+"><i class="fa fa-plus"></i>Other</a>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="kt-portlet">
+                                    <div class="kt-portlet__head">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title" style="color:white">
+                                                Add New Order
+                                            </h3>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!--begin::Form-->
+                                    <form class="kt-form">
+
+
+                                        <div class="kt-portlet__body">
+                                            <div class="kt-section kt-section--first">
+                                                @*<div class="kt-portlet__head" style="margin-top:-5%">
+                                                        <div class="form-group row ">
+                                                            <div class="kt-input-icon kt-input-icon--left col-8">
+                                                                <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                                                    <span><i class="la la-filter"></i></span>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>*@
+
+
+
+
+
+                                                <div>
+
+                                                    <h3 class="kt-section__title">Favorites <span class="la la-star"></span></h3>
+
+
+                                                </div>
+
+                                                <div class="kt-section__body">
+                                                    <div class="form-group row">
+
+                                                        <div class="col-lg-12">
+                                                            <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                                                <tbody>
+
+                                                                    <tr>
+
+                                                                        <td style='width: 80%;'>
+                                                                            <input type="checkbox">
+                                                                            Ventolin Inhaler - Every 6 Hour - Until Discontinued
+                                                                        </td>
+
+
+
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td style='width: 80%;'>
+                                                                            <input type="checkbox" checked="checked">
+                                                                            Kestine 20 mg - Oral - Once - Daily - Until Discontinued
+
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style='width: 20%;align-content:end'> </td>
+                                                                        <td style='width: 20%;align-content:end'>
+                                                                            <button type="button" class="btn btn-info"><i class="fa fa-plus"></i>Add</button>
+
+
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="kt-separator kt-separator--border-dashed kt-separator--space-sm"></div>
+                                                <h3 class="kt-section__title">Order Sets<a class="la large-reset-order"></a></h3>
+                                                <div class="kt-section__body">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-12">
+                                                            <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                                                <tbody>
+
+                                                                    <tr>
+                                                                        <td style='width: 80%;'>
+                                                                            <input type="checkbox">
+                                                                            My Set
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style='width: 80%;'>
+                                                                            <input type="checkbox">
+                                                                            Seasonal Allergy Set
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style='width: 80%;'>
+                                                                            <input type="checkbox" checked="checked">
+                                                                            Asthma Set
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style='width: 80%;'>
+                                                                        </td>
+                                                                        <td style='width: 20%;'>
+
+                                                                            <button type="button" class="btn btn-info"><i class="fa fa-plus"></i>Add</button>
+
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="kt-separator kt-separator--border-dashed kt-separator--space-sm"></div>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                    <!--end::Form-->
+                                    <!--end::Form-->
+                                </div>
+                                <div>
+                                    <!--begin::Portlet-->
+
+                                    <div class="kt-portlet" id="ShowForm"></div>
+                                    <!--end::Portlet-->
+                                </div>
+                                <div>
+
+                                </div>
+                                <!--load partial view-->
+                            </div>
+                            <div class="col-lg-6">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet" id="OrderIssue"></div>
+
+
+                                <!--end::Portlet-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="kt_Notes" role="tabpanel">
+                        <div class="row">
+
+
+
+                            @*//--------------- Notes View tree start--------------------//*@
+                            <div class="col-md-4">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet kt-portlet--tab">
+                                    @*<div class="kt-portlet__body">*@
+                                    <div class="kt-portlet__body">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-12">
+                                                <div class="form-group m-form__group align-items-center">
+                                                    <div class="input-group">
+                                                        <input name="filterText" autoFocus
+                                                               class="form-control m-input"
+                                                               type="text">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-info" type="submit">
+                                                                <i class="la la-filter" style="color:white"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--begin::Tree Section-->
+                                    <div class="row" style="height: 51rem; margin-top:-6%">
+                                        <div class="col-md-12">
+                                            <div id="treeviews"></div>
+                                        </div>
+
+                                    </div>
+                                    <script type="text/javascript">
+                    jQuery(function ($) {
+                        function onCheck() {
+                            // find all LI elements in the treeview and determine how many are checked
+                            var checkedCount = $("#treeviews").swidget("TreeView").element.find("li").filter(function () {
+                                return $("#treeviews").swidget("TreeView").checked($(this));
+                            }).length;
+                            $("#checkedCount").html(checkedCount + " items checked");
+                        }
+                        $("#treeviews").shieldTreeView({
+                            checkboxes: {
+                                enabled: true,
+                                children: true
+                            },
+                            events: {
+                                check: onCheck
+                            },
+                            dataSource: {
+                                data: [
+                                    {
+                                        text: "All Notes",
+                                        iconUrl: '@Url.Content("~/Content/img/file/folder_Green.png")',
+                                        expanded: true,
+                                        items: [
+                                            {
+                                                text: "02-07-2020 (Follow-up)",
+                                                iconUrl: '@Url.Content("~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "03-07-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "04-07-2020 (Consultation)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+                                            },
+                                            {
+                                                text: "02-07-2020 (Follow-up)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "03-07-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "04-07-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+                                            },
+                                            {
+                                                text: "02-07-2020 (Follow-up)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "03-07-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "05-07-2020 (Consultation)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+                                            },
+                                            {
+                                                text: "06-07-2020 (Follow-up)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "06-08-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "07-08-2020 (Consultation)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+                                            },
+                                            {
+                                                text: "08-08-2020 (Follow-up)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "02-07-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "02-07-2020 (Consultation)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+                                            },
+                                            {
+                                                text: "02-07-2020 (Follow-up)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "02-07-2020 (Exam)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+
+                                            },
+                                            {
+                                                text: "02-07-2020 (Consultation)",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/folder.png")'
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }
+                        });
+                        onCheck();
+                    });
+                                    </script>
+                                    <style>
+                                        .container {
+                                            max-width: 400px;
+                                            margin: auto;
+                                            overflow: hidden;
+                                        }
+                                    </style>
+                                    <p class="ml-2"><span id="checkedCount"></span></p>
+                                    <!--end::Tree Section-->
+                                    @*</div>*@
+                                </div>
+                                <!--end::Portlet-->
+                            </div>
+                            @*//-------------- Notes View Tree End ---------------------//*@
+
+
+
+
+                            <div class="col-md-8">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet">
+                                    <div class="kt-portlet__head">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title" style="color:white;">
+                                                Previous Notes
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <form class="kt-form" style="height: 62rem; overflow:auto">
+                                        <div class="kt-portlet__body">
+                                            <div class="form-group">
+
+                                                <table class="table encounters-table-custom mb-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <h5>Chief Complaint </h5>
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>1. Headache</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2. Frequant Caugh</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3. Breathing Problems</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4. Fever</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                            <div class="form-group">
+                                                <div class="form-group custom-form-group mb-2">
+
+                                                    <h5 class="table-heading-custom">Patient History</h5>
+                                                    <table class="table encounters-table-custom mb-1">
+                                                        <thead>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <h5 class="table-heading-custom">Present Illness </h5>
+                                                                </td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+
+                                                            <tr>
+                                                                <td>1. Has asthma since 4 year</td>
+                                                                <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Condition has gotten worse in last 1 year</td>
+                                                                <td></td>
+                                                            </tr>
+
+
+                                                        </tbody>
+                                                    </table>
+
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <table class="table encounters-table-custom mb-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <h5>Medical History</h5>
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>1. Has asthma since 4 year</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2. Frequent Cough</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3. Breathing Problems</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4. Fever</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <table class="table encounters-table-custom mb-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <h5>Family History</h5>
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>1. Family History Asthma, Mother has asthma</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2. Long Family History of Diabetes, Four Family Member has Diabetes</td>
+                                                            <td><a class="btn btn-default btn-icon" style="height:24px; width:24px"><img src="~/Content/assets/media/med360/copy-forward.png" height="24" width="24"></a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <h5>Social History</h5>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h5>Surgical History </h5>
+                                                <br />
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div class="form-group">
+                                                <h5>Occupational History </h5>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
+                                            <div class="form-group">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <h5>Exams & Investigation </h5>
+                                                                <p><strong><span> &nbsp; &nbsp;  Physical Exams</span></strong></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <h5>Assessment</h5></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><h5>Plan and Recommendations</h5></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><h5>Medication Labs</h5></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end::Portlet-->
+                                <!-- --------Start Modal-------- -->
+                                <!-- --------End Modal-------- -->
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

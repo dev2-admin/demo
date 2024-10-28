@@ -1,0 +1,553 @@
+﻿
+
+
+
+@{
+    ViewBag.PageName = "Patient pre Visit Detail";
+}
+@section Scripts {
+
+}
+<!-- begin:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/patient.png" class="mr-3" style="width: 30px;"></span>Patient pre Visit Detail</h5>
+    </div>
+    <div class="kt-subheader__toolbar">
+
+        @*<button id="CreateEmp" type="button" class="btn btn-info"><i class="fa fa-plus"></i>Create New</button>*@
+
+    </div>
+</div>
+<!-- end:: Content Head -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-12">
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label mt-3">
+                        <label>Date: &nbsp;<span class="text-muted"> 27 May, 2020</span></label>
+                        @*<div class="row">
+            <div class="col-4">
+                <div class="form-group ">
+                    <label>Patient Name<span class="text-muted"></span></label>
+                    <div class="kt-input-icon kt-input-icon--right">
+                        <input type="text" class="form-control form-control-sm" id="PatientName">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group ">
+                    <label>MR NO<span class="text-muted"></span></label>
+                    <div class="kt-input-icon kt-input-icon--right">
+                        <input type="text" class="form-control form-control-sm" id="MRNO">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group ">
+                    <label>Date Time<span class="text-muted"></span></label>
+                    <div class="kt-input-icon kt-input-icon--right">
+                        <input type="datetime-local" class="form-control form-control-sm" id="DateTime">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+
+
+                    </div>
+
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form">
+                    <div class="kt-portlet__body scrollbar-light-blue">  @*style="overflow:auto; height:550px"*@
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="container">
+                                    <label>Cheif Complaints<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> Option 1</a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add </a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i>Option 3</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-4">
+                                    <label>Current Medication<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New Report</a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add Customer</a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i> New Download</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-4">
+                                    <label>History of Present Illness<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New Report</a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add Customer</a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i> New Download</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-4">
+                                    <label>Social & Occupational History<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New Report</a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add Customer</a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i> New Download</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="container">
+                                    <label>Allergies<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New </a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add </a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i> New </a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item" href="#"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-4">
+                                    <label>Medication History<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New </a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add </a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i> New </a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-4">
+                                    <label>Medical and Surgical History<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    @*<div class="form-group ">
+                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                        <div class="dropdown dropdown-inline">
+                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-align-justify"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#"><i class="la la-plus"></i> New Report</a>
+                                                <a class="dropdown-item" href="#"><i class="la la-user"></i> Add Customer</a>
+                                                <a class="dropdown-item" href="#"><i class="la la-cloud-download"></i> New Download</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#"><i class="la la-cog"></i> Settings</a>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>*@
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-4">
+                                    <label>Family History<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New </a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add </a>
+                                                                <a class="dropdown-item"><i class="la la-cloud-download"></i> New </a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="container mt-4">
+                                    <label>Review of Systems<span class="text-muted"></span></label>
+                                    <div class="row border border-warning ">
+                                        <div class="col-12">
+                                            <div class="row  mt-3">
+                                                <div class="col-6">
+                                                    <div class="form-group ">
+                                                        <div class="kt-input-icon kt-input-icon--right">
+                                                            <input type="text" class="form-control" placeholder="" id="PatientName">
+                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                                <span><i class="la la-search"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="form-group ">
+                                                        <button type="button" class="btn btn-outline-success btn-icon btn-sm btn-circle"><i class="la la-plus"></i></button>
+                                                        <div class="dropdown dropdown-inline">
+                                                            <button type="button" class="btn btn-outline-dark btn-elevate-hover btn-icon btn-sm btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"><i class="la la-plus"></i> New </a>
+                                                                <a class="dropdown-item"><i class="la la-user"></i> Add </a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item"><i class="la la-cog"></i> Settings</a>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-12 mt-4">
+                                <div class="container">
+                                    <label>Other Details<span class="text-muted"></span></label>
+                                    <div class="row border border-warning">
+                                        <div class="col-12 mt-3">
+                                            <div class="form-group ">
+                                                <div class="kt-input-icon kt-input-icon--right">
+                                                    <textarea class="form-control" id="exampleTextarea" rows="5" style="resize:vertical; overflow:scroll;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="kt-form__actions">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                            <button type="reset" class="btn btn-label"> <i class="fa fa-trash"></i>Clear</button>
+                            <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+
+                            @*<button type="reset" class="btn btn-label "><i class="fa fa-save"> Save</i></button>
+                            <button type="reset" class="btn btn-label"> <i class="fa fa-trash"></i>Clear</button>
+                            <button type="reset" class="btn btn-outline-hover-danger"><i class="fa fa-times"> Cancel</i></button>*@
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+            <!--begin::Portlet-->
+            <!--end::Portlet-->
+        </div>
+
+    </div>
+</div>
+
+

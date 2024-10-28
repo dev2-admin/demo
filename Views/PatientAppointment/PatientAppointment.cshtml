@@ -1,0 +1,203 @@
+﻿
+
+@{
+    ViewBag.HomePage= "Patient Appointment";
+}
+@section Scripts {
+
+}
+<!-- begin:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/patient.png" class="mr-3" style="width: 30px;"></span>Patient Appointments</h5>
+    </div>
+    <div class="kt-subheader__toolbar">
+
+        @*<button id="CreateEmp" type="button" class="btn btn-info"><i class="fa fa-plus"></i>Create New</button>*@
+
+    </div>
+</div>
+<!-- end:: Content Head -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                @*<div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Patient Detail
+                        </h3>
+                    </div>
+                </div>*@
+
+                <!--begin::Form-->
+                <form class="kt-form">
+                    <div class="kt-portlet__body row">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <label>MR NO<span class="text-muted">                       [Patient ID]</span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control" placeholder="Patient ID . . ." id="MRNO">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                    </div>
+                                    @*<span class="form-text text-muted">Patient ID</span>*@
+                                </div>
+                                <div class="form-group ">
+                                    <label>Patient Name</label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control" placeholder="" id="PatientName">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input class="form-control" type="date" value="2020-07-6" id="Date">
+                                </div>
+                                <div class="form-group">
+                                    <label>Choose Time</label>
+                                    <input class="form-control" type="time" value="13:45:00" id="Time">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Remind to Send</label>
+                                    <div class="kt-radio-inline">
+                                        <label class="kt-radio kt-radio--success">
+                                            <input type="radio" name="radio2"> On
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-radio">
+                                            <input type="radio" name="radio2"> Off
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <label>SSN</label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control" placeholder="" id="SSN">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>DOB</label>
+                                    <input class="form-control" type="date" value="2020-07-6" id="DOB">
+                                </div>
+                                <div class="form-group">
+                                    <label>Choose Clinic</label>
+                                    <select class="custom-select form-control">
+                                        <option selected>Choose One</option>
+                                        <option value="1">Pulmonology</option>
+                                        <option value="2">Radiology</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Choose Chief Complaint</label>
+                                    <select class="custom-select form-control">
+                                        <option selected>Choose One</option>
+                                        <option value="1">Fever</option>
+                                        <option value="2">Asthma</option>
+                                        <option value="2">Chest Issue</option>
+
+                                    </select>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label>Reminder Option</label>
+                                    <div class="kt-checkbox-inline">
+                                        <label class="kt-checkbox kt-checkbox--success">
+                                            <input type="checkbox"> By Call
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox kt-checkbox--success">
+                                            <input type="checkbox"> By Email
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-checkbox kt-checkbox--success">
+                                            <input type="checkbox"> By SMS
+                                            <span></span>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Type of Appointment</label>
+                                    <select class="custom-select form-control">
+                                        <option selected>Choose One</option>
+                                        <option value="1">Request</option>
+                                        <option value="2">Walk-in</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Choose Gender</label>
+                                    <select class="custom-select form-control">
+                                        <option selected>Choose One</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Choose Doctor</label>
+                                    <select class="custom-select form-control">
+                                        <option selected>Choose One</option>
+                                        <option value="1">Fever</option>
+                                        <option value="2">Asthma</option>
+                                        <option value="2">Chest Issue</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mode of Visit</label>
+                                    <select class="custom-select form-control">
+                                        <option selected>Choose One</option>
+                                        <option value="1">Physical Visit</option>
+                                        <option value="2">Tele Visit</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label for="exampleTextarea">Note</label>
+                                    <textarea class="form-control" id="exampleTextarea" rows="2"></textarea>
+                                </div>
+
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+            <!--begin::Portlet-->
+            <!--end::Portlet-->
+        </div>
+
+    </div>
+</div>
+

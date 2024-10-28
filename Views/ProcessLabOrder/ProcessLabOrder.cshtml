@@ -1,0 +1,347 @@
+﻿@{
+    
+}
+@section Scripts {
+    <script src="~/Content/assets/vendors/custom/js/vendors/bootstrap-datepicker.init.js"></script>
+    <script src="~/Content/assets/vendors/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.js"></script>
+
+}
+
+
+
+<link href="~/Content/assets/vendors/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" />
+<link href="~/Content/assets/vendors/general/bootstrap-datetime-picker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+
+
+
+<!-- begin:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        
+        <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/Hospital.png" class="mr-3" style="width: 30px; color:aquamarine"></span>Lab Order Processing</h3>
+    </div>
+    <div class="kt-subheader__toolbar">
+
+
+
+    </div>
+</div>
+<!-- end:: Content Head -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    @*<div class="row">
+        <div class="col-md-12">*@
+
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+
+                <div class="kt-portlet__body">
+                    <div class="kt-portlet__head-label" style="margin-top:1%; margin-bottom:-1%">
+                        <div class="row kt-portlet__head-title">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label>Patient Name<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control form-control-sm" id="PatientName">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label>MR NO<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control form-control-sm" id="MRNO">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label>Date Time<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="datetime-local" class="form-control form-control-sm" id="DateTime">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--begin::Form-->
+        <form class="kt-form">
+            <div class="kt-portlet__body scrollbar-light-blue" style="overflow:auto; ">
+
+                <div class="row border border-warning mt-2">
+                    <div class="col-md-12 mt-2">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row-col-separator-md">
+                                    <div class="col-md-12">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-3">
+                                                <label>1. <span class="text-muted"> -PFT </span></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p> Conduct test by :09 06 2020- Test by internal Lab <br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 col-md-12 ">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control">
+                                                <option selected>Choose One</option>
+                                                <option value="1">In-Process</option>
+                                                <option value="2">Complete</option>
+                                                <option value="2">Denied</option>
+                                            </select>
+                                            <div class="ml-1">
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="row mt-2 ml-3">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group pull-right ">
+                                    <label>.<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right pull-right">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                                        <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                        @*<button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>*@
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row border border-warning mt-2">
+                    <div class="col-md-12 mt-2">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row-col-separator-md">
+                                    <div class="col-md-12">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-3">
+                                                <label>2. <span class="text-muted"> -CBC </span></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p> Conduct test by:09 09 2020-Test by Aga Khan Lab<br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 col-md-12 ">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control">
+                                                <option selected>Choose One</option>
+                                                <option value="1">In-Process</option>
+                                                <option value="2">Complete</option>
+                                                <option value="2">Denied</option>
+                                            </select>
+                                            <div class="ml-1">
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row mt-2 ml-3">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group pull-right ">
+                                    <label>.<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right pull-right">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                                        <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                        @* <button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row border border-warning mt-2">
+                    <div class="col-md-12 mt-2">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row-col-separator-md">
+                                    <div class="col-md-12">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-3">
+                                                <label>2. <span class="text-muted"> -CT Scan </span></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p> Conduct test by:09 09 2020-Test by IDC Lab<br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 col-md-12 ">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control">
+                                                <option selected>Choose One</option>
+                                                <option value="1">In-Process</option>
+                                                <option value="2">Complete</option>
+                                                <option value="2">Denied</option>
+                                            </select>
+                                            <div class="ml-1">
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row mt-2 ml-3">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group pull-right ">
+                                    <label>.<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right pull-right">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                                        <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                        @* <button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row border border-warning mt-2">
+                    <div class="col-md-12 mt-2">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row-col-separator-md">
+                                    <div class="col-md-12">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-3">
+                                                <label>2. <span class="text-muted"> -Xray </span></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p> Conduct test by:09 09 2020-Test by IDC Lab<br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 col-md-12 ">
+                                        <div class="input-group">
+                                            <select class="custom-select form-control">
+                                                <option selected>Choose One</option>
+                                                <option value="1">In-Process</option>
+                                                <option value="2">Complete</option>
+                                                <option value="2">Denied</option>
+                                            </select>
+                                            <div class="ml-1">
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row mt-2 ml-3">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group pull-right ">
+                                    <label>.<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right pull-right">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                                        <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                        @*<button type="button" class="btn btn-outline-hover-brand  btn-icon-lg"><i class="la la-print" style="color:blue"></i></button>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <!--end::Form-->
+    </div>
+
+    <!--end::Portlet-->
+    <!--begin::Portlet-->
+    <!--end::Portlet-->
+    @*</div>
+
+        </div>*@
+</div>

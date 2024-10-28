@@ -1,0 +1,193 @@
+﻿<div class="col-md-12">
+
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+         
+                <div class="kt-portlet__head-label">
+
+                    <h3 class="kt-portlet__head-title" style="color:white">
+                        @*<span> <img src="~/Content/assets/media/med360/physical exam.png" class="mr-3" style="width: 30px;"></span>*@
+                        Add Exercise Order
+                    </h3>
+</div>
+            </div>
+        </div>
+
+
+
+
+        <!--begin::Form-->
+        <form class="kt-form">
+            <div class="kt-portlet__body  ">
+
+                <div class="form-group row">
+                    <div class="form-group col-md-6">
+                        <label>Select Exercise Type</label>
+
+                        <select class="form-control" id="exampleSelect1">
+                            <option></option>
+                            <option>Weight Training</option>
+                            <option>Simple walk</option>
+                            <option>Cardio</option>
+                            <option>High Intensity</option>
+                            <option>Body Weight Training</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Exercise Name</label>
+                        <input type="text" class="form-control">
+
+                    </div>
+
+
+                </div>
+                <div class="form-group row">
+                    <div class="form-group col-md-12">
+                        <label>Exercise Details</label>
+                        <textarea class="form-control col-md-12" id="exampleTextarea" form-group rows="2"></textarea>
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="form-group col-md-6">
+                        <label>Order To</label>
+
+                        <select class="form-control" id="exampleSelect1">
+                            <option></option>
+                            <option>Nurse</option>
+                            <option>Provider</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Nurse Name</label>
+                        <input type="text" class="form-control">
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label>Start Date</label>
+                        <input class="form-control" type="date" value="" id="example-datetime-local-input">
+                    </div>
+                    <div class="col-md-6">
+                        <label>End Date</label>
+                        <input class="form-control" type="date" value="" id="example-datetime-local-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="exampleSelect2">Set Routine</label>
+                        <input class="form-control" type="time" value="" id="example-time-input">
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <label for="exampleSelect2">Days</label>
+                        <select class="form-control" id="exampleSelect2">
+                            <option>Select Days</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <div class="form-group form-group-last col-md-12">
+                        <label for="exampleTextarea">Instructions</label>
+                        <textarea class="form-control col-md-12" id="exampleTextarea" form-group rows="2"></textarea>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+
+                    <div class="form-group row">
+                        <div class="col-md-7">
+                        </div>
+                        <div class="col-md-5 kt-align-right">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                            <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+    </div>
+
+    <!--end::Portlet-->
+
+</div>
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Added Exercise List
+            </h3>
+        </div>
+
+    </div>
+    <div class="kt-portlet__body">
+        <div class="col-lg-10">
+            <table class="table  table-bordered table-hover" id="kt_table_2">
+
+                <tbody>
+
+                    <tr>
+                        <td>Walk</td>
+
+                    </tr>
+                    <tr>
+                        <td>Weight-Training</td>
+
+                    </tr>
+                    <tr>
+                        <td>Yoga</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="kt-portlet__foot">
+        <div class="kt-form__actions">
+            <div class="row">
+                <div class="col-md-7">
+                </div>
+                <div class="col-md-5 kt-align-right">
+
+                    <button type="button" class="btn btn-info"><i class="fas fa-file-signature"></i>Sign</button>
+                    <button type="button" class="btn btn-info"><i class="fas fa-signature"></i>Co-sign</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

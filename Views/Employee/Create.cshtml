@@ -1,0 +1,542 @@
+﻿
+<!-- Modal -->
+
+<div class="modal-header">
+    <h5 class="modal-title" id="CreateOrEditModalLabel"><span><img src="~/Content/assets/media/med360/user.png" class="mr-3" style="width: 30px;"></span> Create Employee</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#" data-target="#kt_tabs_1_1">General Info</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="tab" href="#" data-target="#kt_tabs_1_2">Contact Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#" data-target="#kt_tabs_1_3">Education</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#" data-target="#kt_tabs_1_4">Experience</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#" data-target="#kt_tabs_1_5">Documents</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="kt_tabs_1_1" role="tabpanel">
+
+
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="Employee_No">Employee No</label>
+
+                    <input type="text" id="Employee_No" class="form-control form-control-sm" />
+                </div>
+                <div class="col-md-4">
+                    <label for="Name_Prefix">Title</label>
+
+                    <select type="text" id="Name_Prefix" class="form-control form-control-sm">
+                        <option value="1">Mr.</option>
+                        <option value="2">Mrs.</option>
+                        <option value="2">Ms.</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+
+                    <label for="First_Name">First Name</label>
+
+                    <input type="text" id="First_Name" class="form-control form-control-sm" />
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="Middle_Name">Middle Name</label>
+
+                    <input type="text" id="Middle_Name" class="form-control form-control-sm" />
+
+                </div>
+                <div class="col-md-4">
+                    <label for="Last_Name">Last name</label>
+
+                    <input type="text" id="Last_Name" class="form-control form-control-sm" />
+
+
+
+                </div>
+                <div class="col-md-4">
+                    <label for="Suffix">Suffix</label>
+
+                    <select type="text" id="Suffix" class="form-control form-control-sm">
+                        <option value="1">Sr</option>
+                        <option value="2">Jr</option>
+                        <option value="3">III</option>
+                    </select>
+
+
+
+                </div>
+            </div>
+            <div class="form-group row">
+
+
+                <div class="col-md-4">
+
+                    <label for="Date_of_Birth">Date of Birth</label>
+
+                    <input type="text" class="form-control form-control-sm" id="Date_of_Birth" readonly placeholder="Select date" />
+
+
+
+                </div>
+
+                <div class="col-md-4">
+                    <label for="SSN">SSN</label>
+
+                    <input id="SSN" type="text" class="form-control form-control-sm" />
+
+
+                </div>
+                <div class="col-md-4">
+                    <label for="Gender">Gender</label>
+
+                    <select type="text" class="form-control form-control-sm" id="Gender">
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="MartialStatus">Marital Status</label>
+                    <select type="text" id="MartialStatus" class="form-control form-control-sm">
+                        <option value="1">Single</option>
+                        <option value="2">Married</option>
+                        <option value="3">Divorced</option>
+                        <option value="4">Widowed</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="DefualtRale">Default Role</label>
+                    <select type="text" id="DefualtRale" class="form-control form-control-sm">
+                        <option value="1">Admin</option>
+                        <option value="2">Receptionist</option>
+                        <option value="3">Doctor</option>
+                        <option value="4">Nurse</option>
+                        <option value="4">Lab Operator</option>
+                        <option value="4">Billing Operator</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="Designation">Designation</label>
+                    <input type="text" id="Designation" class="form-control form-control-sm" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="AssignClinic">Assign Clinic</label>
+
+                    <select type="text" id="AssignClinic" class="form-control form-control-sm">
+                        <option value="1">Pulmonology</option>
+                        <option value="2">Gaestroentology</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="Status">Status</label>
+
+                    <select type="text" id="Status" class="form-control form-control-sm">
+                        <option value="1">Active</option>
+                        <option value="2">Inactive</option>
+
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="tab-pane" id="kt_tabs_1_2" role="tabpanel">
+
+
+            <div class="">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+
+                        <button id="addAddress" data-url="@Url.Action("Address", "Address")" onclick="OpenAddressPopup()" type="button" class="btn btn-brand btn-circle btn-icon"><i class="fa fa-plus"></i></button>
+
+
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="row align-items-center">
+                        <!--begin: Datatable -->
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table id="Address_List" class="table table-striped table-bordered table-hover table-checkable">
+                                    <thead>
+                                        <tr>
+                                            <th nowrap>Action</th>
+                                            <th>Address Id</th>
+                                            <th>Address Line 1</th>
+                                            <th>Address Line 2</th>
+                                            <th>Address Line 3</th>
+                                            <th>Address_Contact_Type1_LOV_ID</th>
+                                            <th>Address_Contact_Type1_LOV_Text</th>
+                                            <th>Contact 1</th>
+                                            <th>Address_Contact_Type2_LOV_ID</th>
+                                            <th>Address_Contact_Type2_LOV_Text</th>
+                                            <th>Contact 2</th>
+                                            <th>Email 1</th>
+                                            <th>Email 2</th>
+                                            <th>Country ID</th>
+                                            <th>Country</th>
+                                            <th>State ID</th>
+                                            <th>State</th>
+                                            <th>City ID</th>
+                                            <th>City</th>
+                                            <th>ZIP</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+
+
+        </div>
+        <div class="tab-pane" id="kt_tabs_1_3" role="tabpanel">
+            <div class="">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <button id="addEducation" data-url="@Url.Action("Education", "Persons")" onclick="openEducationPopup()" type="button" class="btn btn-brand btn-circle btn-icon"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="row align-items-center">
+                        <!--begin: Datatable -->
+                        <div class="col-12">
+                            <div  class="table-responsive">
+                                <table id="Education_Table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <th>
+                                                Education_ID
+                                            </th>
+                                            <th>
+                                                Tenant_ID
+                                            </th>
+                                            <th>
+                                                Persons_ID
+                                            </th>
+                                            <th>
+                                                Qualification_Cadre_ID
+                                            </th>
+                                            <th>
+                                                Qualification_Cadre
+                                            </th>
+                                            <th>
+                                                Degree Title
+                                            </th>
+                                            <th>
+                                                Institute
+                                            </th>
+                                            <th>
+                                                Major Subject
+                                            </th>
+                                            <th>
+                                                Year Issued
+                                            </th>
+                                            <th>
+                                                Achievement
+                                            </th>
+                                            <th>
+                                                Attahment
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+
+          
+        </div>
+        <div class="tab-pane" id="kt_tabs_1_4" role="tabpanel">
+            <div class="form-group row">
+                <label for="Experiance" class="col-md-2">Experience</label>
+                <div class="col-md-4">
+                    <input type="text" id="Experiance" class="form-control form-control-sm" />
+                </div>
+                <label for="Position" class="col-md-2">Position</label>
+                <div class="col-md-4">
+                    <input type="text" id="Position" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="kt_datepicker_1" class="col-md-2">Date From</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control form-control-sm" id="kt_datepicker_1" readonly placeholder="Select date" />
+                </div>
+                <label for="kt_datepicker_2" class="col-md-2">Date To</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control form-control-sm" id="kt_datepicker_2" readonly placeholder="Select date" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Description" class="col-md-2">Description</label>
+                <div class="col-md-10">
+                    <input type="text" id="Description" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label>File Browser</label>
+                <div></div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Experience</label>
+
+                <div class="table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:300px">
+                                    Hospital/College
+                                </th>
+                                <th style="width:150px">
+                                    Position
+                                </th>
+                                <th style="width:150px">
+                                    From
+                                </th>
+                                <th style="width:150px">
+                                    To
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width:300px">
+                                    MAO Hospital
+                                </td>
+                                <td style="width:150px">
+                                    MO
+                                </td>
+                                <td style="width:150px">
+                                    2018
+                                </td>
+                                <td style="width:150px">
+                                    2019
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:300px">
+                                    Doctors Hospital
+                                </td>
+                                <td style="width:150px">
+                                    MO
+                                </td>
+                                <td style="width:150px">
+                                    2018
+                                </td>
+                                <td style="width:150px">
+                                    2019
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:300px">
+                                    Hammeed Latif Hospital
+                                </td>
+                                <td style="width:150px">
+                                    House Officer
+                                </td>
+                                <td style="width:150px">
+                                    2018
+                                </td>
+                                <td style="width:150px">
+                                    2019
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:300px">
+                                    Ever Care Hospital
+                                </td>
+                                <td style="width:150px">
+                                    House Officer
+                                </td>
+                                <td style="width:150px">
+                                    2018
+                                </td>
+                                <td style="width:150px">
+                                    2019
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="kt_tabs_1_5" role="tabpanel">
+            <div class="form-group row">
+                <label for="DocumentID" class="col-md-2">Document ID</label>
+                <div class="col-md-3">
+                    <input type="text" id="DocumentID" class="form-control form-control-sm" />
+                </div>
+                <label for="DocumentType" class="col-md-2">Document Type</label>
+                <div class="col-md-5">
+                    <input type="text" id="DocumentType" class="form-control form-control-sm" />
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+
+                <label for="DocumentTitle" class="col-md-2">Document Title</label>
+                <div class="col-md-10">
+                    <input type="text" id="DocumentTitle" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Country" class="col-md-2">Country</label>
+                <div class="col-md-4">
+                    <input type="text" id="Country" class="form-control form-control-sm" />
+                </div>
+
+                <label for="State" class="col-md-2">State</label>
+                <div class="col-md-4">
+                    <input type="text" id="State" class="form-control form-control-sm" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="kt_datepicker_3" class="col-md-2">Start Date</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control form-control-sm" id="kt_datepicker_3" readonly placeholder="Select date" />
+                </div>
+                <label for="kt_datepicker_4" class="col-md-2">Expiry Date</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control form-control-sm" id="kt_datepicker_4" readonly placeholder="Select date" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label>File Browser</label>
+                <div></div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label"></label>
+
+                <div class="table table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width:150px">
+                                    Action
+                                </th>
+                                <th style="width:300px">
+                                    Document Title
+                                </th>
+                                <th style="width:300px">
+                                    Type
+                                </th>
+                                <th style="width:300px">
+                                    Date Added
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width:150px">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-brand dropdown-toggle" type="button"
+                                                id="dropdownMenuButton" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu"
+                                             aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
+
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fa fa-trash"></i>Delete
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td style="width:300px">
+                                    Bachelors Degree
+                                </td>
+                                <td style="width:300px">
+                                    Education Department
+                                </td>
+                                <td style="width:300px">
+                                    23/06/2020
+                                </td>
+
+                            </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        AddressTable.init();
+        EducationTable.init();
+     });
+</script>
+

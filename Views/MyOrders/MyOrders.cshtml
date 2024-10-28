@@ -1,0 +1,486 @@
+﻿
+
+@{
+    ViewBag.PageName = "My Orders";
+}
+
+@section Styles {}
+
+@section Scripts
+    {}
+<link href="~/Scripts/Tree_Shield/all.min.css" rel="stylesheet" />
+<script src="~/Scripts/Tree_Shield/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/Tree_Shield/shieldui-all.min.js"></script>
+<!-- start:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/order.png" class="mr-3" style="width: 30px;"></span> My Orders</h3>
+    </div>
+    <div class="kt-subheader__toolbar row">
+
+        <div class="kt-input-icon kt-input-icon--left col-md-10">
+            <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+            <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                <span><i class="la la-search"></i></span>
+            </span>
+        </div>
+        <div class="col-md-2">
+            @*<button type="button" class="btn btn-hover-success btn-icon-lg "><i class="la la-filter" style="color:darkgreen"></i></button> &nbsp;*@
+            <button type="button" class="btn btn-secondary  btn-lg btn-icon btn-circle"><i class="la la-filter"></i></button>
+        </div>
+
+    </div>
+</div>
+<!-- end:: Content Head -->
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-4" > 
+            <!--begin::Portlet-->
+            <div class="kt-portlet kt-portlet--tab" style="overflow:auto; height:720px">
+                @*<div class="kt-portlet__body">*@
+                @*<div class="form-group row ">
+            <div class="kt-input-icon kt-input-icon--left col-10">
+                <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+                <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                    <span><i class="la la-search"></i></span>
+                </span>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-hover "><i class="la la-filter" style="color:darkgreen"></i></button>
+            </div>
+        </div>*@
+                <div class="kt-portlet__body">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group align-items-center">
+                                <div class="input-group">
+                                    <input name="filterText" autoFocus
+                                           class="form-control m-input"
+                                           type="text">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="submit">
+                                            <i class="la la-filter" style="color:white"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--begin::Tree Section-->
+
+                <div class="row" style="margin-top:-6%;">
+                    <div class="col-md-12">
+                        <div id="treeview"></div>
+                    </div>
+                    
+                </div>
+                <script type="text/javascript">
+                    jQuery(function ($) {
+                        function onCheck() {
+                            // find all LI elements in the treeview and determine how many are checked
+                            var checkedCount = $("#treeview").swidget("TreeView").element.find("li").filter(function () {
+                                return $("#treeview").swidget("TreeView").checked($(this));
+                            }).length;
+                            // $("#checkedCount").html(checkedCount + " items checked");
+                        }
+                        $("#treeview").shieldTreeView({
+                            checkboxes: {
+                                enabled: false,
+                                children: true
+                            },
+                            events: {
+                                check: onCheck
+                            },
+                            dataSource: {
+                                data: [
+                                    {
+                                        text: "All Orders",
+                                        iconUrl: '@Url.Content( "~/Content/img/file/folder_Green.png")',
+                                        expanded: true,
+                                        items: [
+                                            {
+                                                text: "Medicine",
+                                                iconUrl:'@Url.Content("~/Content/img/file/folder.png")' ,
+                                                expanded: true,
+                                                items: [
+                                                    {
+                                                        text: "10-05-2020",
+                                                        iconUrl:'@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                    },
+                                                    {
+                                                        text: "10-04-2020",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                                    },
+                                                    {
+                                                        text: "10-03-2020",
+                                                        iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                        //expanded: false,
+                                                        //items: [
+                                                        //    {
+                                                        //        text: "logo.jpg",
+                                                        //        iconUrl: "/Content/img/file/file_extension_jpeg.png"
+                                                        //    },
+                                                        //    {
+                                                        //        text: "theme.css",
+                                                        //        iconUrl: "/Content/img/file/file_extension_txt.png"
+                                                        //    }
+                                                        //]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                text: "Lab",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                            },
+                                            {
+                                                text: "Treatment",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                expanded: true
+                                            },
+                                            {
+                                                text: "Procedure",
+                                                iconUrl:'@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                            },
+                                            {
+                                                text: "Diet",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                expanded: true
+                                            },
+                                            {
+                                                text: "Exercise",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")'
+                                            },
+                                            {
+                                                text: "Follow Up",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                expanded: true
+                                            },
+                                            {
+                                                text: "Referrals",
+                                                iconUrl: '@Url.Content( "~/Content/img/file/file_extension_txt.png")',
+                                                expanded: true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        });
+                        onCheck();
+                    });
+                </script>
+                <style>
+                    .container {
+                        max-width: 400px;
+                        margin: auto;
+                        overflow: hidden;
+                    }
+                </style>
+                <p><span id="checkedCount"></span></p>
+                <!--end::Tree Section-->
+                @*</div>*@
+            </div>
+            <!--end::Portlet-->
+        </div>
+        <div class="col-md-8">
+            <!--begin::Portlet-->
+            @*<div class="class="kt-scroll ps ps--active-y" data-scroll="true" data-height="500" data-scrollbar-shown="true" style="height: 520px; overflow: hidden;">
+
+            </div>*@
+            <div style="overflow:auto; height:720px">
+               
+                <form class="kt-form">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Medicine
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-fill"></i>   Request Med Refill
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-kestine</code> The idle timer is built on jQuery and provides two events: idleTimer and active.idleTimer, which fire when the user's idle state has changed.
+                            </div>
+                            <div class="kt-portlet__content">
+                                <code>-Ventolin Inhaler</code> The idle timer is built on jQuery and provides two events: idleTimerand active.idleTimer, which fire when the user's idle state has changed.
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Labs
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-calendar-alt"></i>  Schedule Lab Test
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-PFT</code> <small>ON</small> 09-06-2020 - Test by internal Lab.
+                                <p>Issued on 07-06-2020 by Dr: jhon Baptista status: <code style="color:cornflowerblue">Pending</code> </p>
+
+                            </div>
+                            <div class="kt-portlet__content">
+                                <code>-CBC</code> <small>ON</small> 09-06-2020 - Test by internal Lab.
+                                <p>Issued on 07-06-2020 by Dr: jhon Baptista status: <code style="color:green">Completed</code></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Treatment
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View Medical History
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-Nebulization</code> Twice daily - Start from 09-06-2020 until 011-06-2020.
+                                <p>Issued on 07-06-2020 by Dr: jhon Baptista status: <code style="color:green">Completed</code></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Procedures
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View Surgical History
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-Bronchoscopy</code> <small>On</small> 06-08-2020 -Provider Dr: Jhons Baptista
+                                <p>Issued on 07-06-2020 by Dr: jhon Baptista status: <code style="color:green">Completed</code></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Diet
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View Education
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-Follow Diabetic Diet</code> <small>Start From</small> 06-08-2020 -Untill: Discontinued
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Exercise
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View Education
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-Light Jogging</code> Once Weekly- Start from: 06-08-2020 -Untill: 011-08-2020
+                                <p>Issued on 07-06-2020 by Dr: jhon Baptista </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Follow Up Appointment
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-fill"></i>  Request Med Refill
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                <code>-kestine</code> The idle timer is built on jQuery and provides two events: idleTimer and active.idleTimer, which fire when the user's idle state has changed.
+                            </div>
+                            <div class="kt-portlet__content">
+                                <code>-Ventolin Inhaler</code> The idle timer is built on jQuery and provides two events: idleTimerand active.idleTimer, which fire when the user's idle state has changed.
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Referrals
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View Provider
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                The idle timer is built on jQuery and provides two events: <code>idle.idleTimer</code> and <code>active.idleTimer</code>, which fire when the user's idle state has changed. When you move your mouse over the page or
+                                start typing, you're considered <code>active</code>. On this page we have two idle timers. One for the entire document. Another for the text area on the right (or bottom if your on mobile).
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon kt-hidden">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Others
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-actions">
+                                    <a href="#" class="btn btn-outline-brand btn-bold btn-sm">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> View Education
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-portlet__content">
+                                Avoid Passive <code>Smooking</code>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                    <!--begin::Footer-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal"><i class="la la-print"></i>Print All</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-eye"></i>View</button>
+                      
+
+                       
+                    </div>
+                    @*<div class="kt-portlet--last kt-section__content--solid">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+
+                </div>
+                <div class="kt-portlet__head-toolbar kt-section__content--solid kt-align-center ">
+                    <div class="kt-portlet__head-actions">
+                        <button type="button" class="btn btn-outline-brand"><i class="la la-print"></i> Print All</button>&nbsp;
+                        <button type="button" class="btn btn-outline-brand"><i class="fa fa-eye" aria-hidden="true"></i> View</button>&nbsp;
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+
+                    <!--end::Footer-->
+                </form>
+            </div>
+            <!--end::Portlet-->
+
+
+        </div>
+
+
+    </div>
+</div>
+

@@ -1,0 +1,153 @@
+﻿
+<script src="~/Content/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="~/Scripts/SystemAdmin/Patient_Insurance.js"></script>
+<!-- Modal -->
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/insurance.png" class="mr-3" style="width: 30px;"></span> Create Insurance Information</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="IIClose">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <input type="hidden" id="Patient_Coverage_ID"/>
+    <input type="hidden" id="Patient_ID"/>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label>Mode of Coverage</label>
+            <select class="form-control" id="Mode_of_Coverage_LOV_ID">
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="">Insurance Type</label>
+            <select class="form-control" id="Coverage_Type_LOV_ID">
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label>Insurance Provider</label>
+            <div class="kt-input-icon">
+                <select class="form-control" id="Coverage_Provider_LOV_ID">
+                </select>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label>Verified</label>
+            <div class="kt-radio-inline" id="Coverage_Verified">
+                <label class="kt-radio kt-radio--solid">
+                    <input type="radio" name="Coverage_Verified" checked value="1"> Yes
+                    <span></span>
+                </label>
+                <label class="kt-radio kt-radio--solid">
+                    <input type="radio" name="Coverage_Verified" value="0"> No
+                    <span></span>
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label>Expiration Date</label>
+            <div class="kt-input-icon">
+                <input type="date" class="form-control" id="Coverage_Expiry_Date">
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <label class="">Insurance Plan</label>
+            <div class="kt-input-icon">
+                <select class="form-control" id="Coverage_Plan_LOV_ID">
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label class="">Country</label>
+            <div class="kt-input-icon">
+                <select class="form-control" id="Coverage_Country_ID">
+                </select>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <label class="">Guarantor Name</label>
+            <div class="kt-input-icon">
+                <input type="text" class="form-control" id="Gaurantor_Name">
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label>State</label>
+            <div class="kt-input-icon">
+                <select class="form-control" id="Coverage_State_ID">
+                </select>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <label>Guarantor DOB</label>
+            <div class="kt-input-icon">
+                <input type="date" class="form-control" id="Gaurantor_DOB">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label>City</label>
+            <select class="form-control" id="Coverage_City_ID">
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Guarantor Relation</label>
+            <select class="form-control" id="Gaurantor_Relation_LOV_ID">
+            </select>
+        </div>
+    </div>
+
+   
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label>Zip Code</label>
+            <div class="kt-input-icon">
+                <input type="text" class="form-control" id="Coverage_Zip_Code">
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <label>Notes</label>
+            <div class="kt-input-icon">
+                <textarea class="form-control" id="Coverage_Notes"></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    <button type="button" id="SaveII" class="btn btn-info" onclick="SaveData()"><i class="fa fa-save"></i>Save</button>
+    <button type="button" id="UpdateII" onclick="UpdateData();" class="btn btn-info" style="display:none">Update</button>
+    <button type="button" id="DeleteII" onclick="DeleleData();" class="btn btn-info" style="display:none">Delete</button>
+</div>
+

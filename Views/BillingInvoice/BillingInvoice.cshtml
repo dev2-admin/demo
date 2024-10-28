@@ -1,0 +1,58 @@
+﻿@section Scripts
+{
+
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css">
+
+
+
+}
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"><span><img src="~/Content/assets/media/med360/bill.png" class="mr-3" style="width: 30px;"></span>OPD Invoice</h3>
+
+    </div>
+
+</div>
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+
+
+        <!--begin::Form-->
+        <form class="kt-form kt-form--label-right">
+            <div class="kt-portlet__body">
+
+
+                <div class="col-md-12">
+
+                    <img src="~/Content/img/BillingInvoice.png" id="Invoice" style="width:100%">
+
+                </div>
+
+
+                <div class="form-group row">
+                </div>
+                <div class="kt-portlet__foot">
+                    <div class="kt-form__actions">
+                        <div class="form-group row">
+                            <div class="col-md-7"> </div>
+                            <div class="col-md-5 kt-align-right">
+                                <button type="button" class="btn btn-info" onclick="printJS('/Content/img/BillingInvoice.png', 'image');return false;"><i class="fa fa-print fa-2x"></i>Print</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</form>
+
+        <!--end::Form-->
+    </div>
+
+    <!--end::Portlet-->
+</div>
+<script type="text/javascript">
+
+</script>

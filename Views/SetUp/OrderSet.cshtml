@@ -1,0 +1,236 @@
+﻿@section Styles {
+    <link href="@Url.Content("~/Content/assets/vendors/custom/datatables/datatables.bundle.css")" rel="stylesheet" type="text/css" />
+}
+@section Scripts
+{
+    <script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/pages/crud/datatables/advanced/row-grouping.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#OrderIssue").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "OrderIssue" });
+
+        $("#Medicine").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Medicine" });
+
+        });
+        $("#Treatment").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Treatment" });
+        });
+        $("#Referral").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Referral" });
+        });
+        $("#Procedure").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Procedure" });
+        });
+        $("#Exercise").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Exercise" });
+        });
+        $("#PatientEducation").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "PatientEducation" });
+        });
+        $("#FollowUp").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "FollowUp" });
+        });
+        $("#Lab").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Labs" });
+        });
+        $("#Diet").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Diet" });
+        });
+        $("#Other").on("click", function () {
+            $("#ShowForm").load('@Url.Action("GetView", "SetUp")',
+                { viewName: "Other" });
+        });
+        //
+        //$('.Treatment').click(function () {
+
+        //    $("#ShowForm").load("/SetUp/GetView",
+        //        { viewName: "Medicine" });
+        //});
+    });
+    </script>
+
+}
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+
+   
+    <div class="kt-subheader__main">
+        <a class="btn btn-info" id="Medicine" role="button" style="color:white;">Medicine</a>
+        <a class="btn btn-info" id="Lab" role="button" style="color:white;">Labs</a>
+        <a class="btn btn-info" id="Imaging" role="button" style="color:white;">Imaging</a>
+        <a class="btn btn-info" id="Treatment" role="button" style="color:white;">Treatment</a>
+        <a class="btn btn-info" id="Procedure" role="button" style="color:white;">Procedures</a>
+        <a class="btn btn-info" id="Diet" role="button" style="color:white;">Diet</a>
+        <a class="btn btn-info" id="Exercise" role="button" style="color:white;">Exercise</a>
+        <a class="btn btn-info" id="FollowUp" role="button" style="color:white;">FollowUp</a>
+        <a class="btn btn-info" id="Referral" role="button" style="color:white;">Referrals</a>
+        <a class="btn btn-info" id="PatientEducation" role="button" style="color:white;">Patient Education</a>
+        <a class="btn btn-info" id="Other" role="button" style="color:white;">Other</a>
+    </div>
+</div>
+
+<!-- end:: Subheader -->
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="kt-portlet">
+                <div class="kt-portlet__head kt-portlet__head--fit">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title" style="color:white;">
+                            Add New Order
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form">
+
+
+                    <div class="kt-portlet__body">
+                        <div class="kt-section kt-section--first">
+                            @*<div class="kt-portlet__head" style="margin-top:-5%">
+                                    <div class="form-group row ">
+                                        <div class="kt-input-icon kt-input-icon--left col-8">
+                                            <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                                <span><i class="la la-filter"></i></span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </div>*@
+
+
+
+
+
+                            <div>
+
+                                <h3 class="kt-section__title">Favorites <span class="la la-star"></span></h3>
+
+
+                            </div>
+
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>
+                                                        <input type="checkbox">
+                                                        Ventolin Inhaler - Every 6 Hour - Until Discontinued
+                                                    </td>
+
+
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td style='width: 80%;'>
+                                                        <input type="checkbox" checked="checked">
+                                                        Kestine 20 mg - Oral - Once - Daily - Until Discontinued
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style='width: 80%;'>
+                                                        <button type="button" class="btn btn-info"><i class="fa fa-plus"></i>Add</button>
+                                                      
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-sm"></div>
+                            <h3 class="kt-section__title">Order Sets<a class="la large-reset-order"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td style='width: 80%;'>
+                                                        <input type="checkbox">
+                                                        My Set
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style='width: 80%;'>
+                                                        <input type="checkbox">
+                                                        Seasonal Allergy Set
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style='width: 80%;'>
+                                                        <input type="checkbox" checked="checked">
+                                                        Asthma Set
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style='width: 80%;'>
+                                                        <button type="submit" class="btn btn-success">Add</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-sm"></div>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <!--end::Form-->
+                <!--end::Form-->
+            </div>
+            <div>
+                <!--begin::Portlet-->
+
+                <div class="kt-portlet" id="ShowForm"></div>
+                <!--end::Portlet-->
+            </div>
+            <div>
+
+            </div>
+            <!--load partial view-->
+        </div>
+        <div class="col-lg-6">
+            <!--begin::Portlet-->
+            <div class="kt-portlet" id="OrderIssue"></div>
+
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>

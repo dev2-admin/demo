@@ -1,0 +1,115 @@
+﻿"use strict";
+var EmployeeTable = function () {
+
+    var initTable1 = function () {
+        var table = $('#SpecialityClinic');
+
+        // begin first table
+        table.DataTable({
+            responsive: true,
+            "bAutoWidth": false,
+
+            dom: `<'row'<'col-sm-12'tr>>
+			<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+
+            lengthMenu: [5, 10, 25, 50],
+
+            pageLength: 10,
+
+            language: {
+                'lengthMenu': 'Display _MENU_',
+            },
+
+            // Order settings
+            order: [[1, 'desc']],
+
+
+            columnDefs: [
+                {
+                    targets: 0,
+                    title: 'Actions',
+                    orderable: false,
+                    width: 100,
+                    class: 'dt-center',
+                    render: function (data, type, full, meta) {
+                        return `
+
+ <div class="dropdown">
+                                  <button class="btn btn-outline-brand dropdown-toggle" type="button"
+                                     id="dropdownMenuButton" data-toggle="dropdown"
+                                      aria-haspopup="true" aria-expanded="false">
+                                                                Action
+                                                            </button>
+                                                            <div class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton">
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-edit"></i> Edit</a>
+                                                               
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-trash" ></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                      
+                        `;
+                    },
+                },
+            ],
+        });
+
+    };
+
+    return {
+
+        //main function to initiate the module
+        init: function () {
+            initTable1();
+        },
+
+    };
+
+}();
+
+
+
+
+    
+
+var AddSpeciality = function (url) {
+    debugger;
+    //$("#CreateEmp").click(function () {
+        var $buttonClicked = $(this);
+        var id = $buttonClicked.attr('data-id');
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            data: { "Id": id },
+            datatype: "json",
+            success: function (data) {
+                $('#myModalContent').html(data);
+                $('#myModal').modal(options);
+                $('#myModal').modal('show');
+
+            },
+            error: function () {
+                alert("Dynamic content load failed.");
+            }
+        });
+    //});
+    //$("#closebtn").on('click',function(){
+    //    $('#myModal').modal('hide');
+
+    $("#closbtn").click(function () {
+        $('#myModal').modal('hide');
+    });
+};
+
+   
+
+
+    
+
+jQuery(document).ready(function () {
+    EmployeeTable.init();
+});

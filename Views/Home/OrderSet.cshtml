@@ -1,0 +1,123 @@
+﻿
+
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Add New Order Set
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form">
+                    @*<div class="col-md-6">*@
+                    <div class="kt-portlet__body  ">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>Name</label>
+                                <input type="text" class="form-control">
+
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="exampleSelect1">Order Type</label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option></option>
+                                    <option>Medicine</option>
+                                    <option>Labs</option>
+                                    <option>Treatment</option>
+                                    <option>Diet</option>
+                                    <option>Exercise</option>
+                                    <option>Follow Ups</option>
+                                    <option>Referrals</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="exampleSelect2">Select Medicine</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>Capsules</option>
+                                    <option>Drops</option>
+                                    <option>Injections</option>
+                                    <option>Inhalers</option>
+                                </select>
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="exampleSelect2">Set Routine</label>
+                                @*<input class="form-control" type="time" value="13:45:00" id="example-time-input">*@
+                                <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="exampleSelect2">Select Route</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>Oral</option>
+                                    <option>Injection</option>
+                                    <option>Iv</option>
+
+                                </select>
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="exampleSelect2">Select Dosage</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>5mg</option>
+                                    <option>10mg</option>
+                                    <option>15mg</option>
+                                    <option>20mg</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-4">
+                                <label>Start Date</label>
+                                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                            </div>
+                            <div class="col-4">
+                                <label>End Date</label>
+                                <input class="form-control" type="date"  id="example-date-input">
+                            </div>
+                        </div>
+
+                    </div>
+                    @*</div>*@
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-9">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+
+        </div>
+
+    </div>
+</div>
+
+

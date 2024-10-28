@@ -1,0 +1,418 @@
+﻿@{
+    ViewBag.PageName = "Pharmacy Order";
+}
+@section Scripts {
+    <script src="~/Content/assets/vendors/custom/js/vendors/bootstrap-datepicker.init.js"></script>
+    <script src="~/Content/assets/vendors/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.js"></script>
+
+}
+
+
+
+<link href="~/Content/assets/vendors/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" />
+<link href="~/Content/assets/vendors/general/bootstrap-datetime-picker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+
+
+
+<!-- begin:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/pharmacy.png" class="mr-3" style="width: 30px;"></span>Pharmacy Order Processing</h5>
+    </div>
+    <div class="kt-subheader__toolbar">
+
+    </div>
+</div>
+<!-- end:: Content Head -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    @*<div class="row">
+        <div class="col-md-12">*@
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                @*<div class="kt-portlet__body">
+                    <div class="kt-portlet__head-label" style="margin-top:1%; margin-bottom:-1%">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <label>Patient Name<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control form-control-sm" id="PatientName">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <label>MR NO<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="text" class="form-control form-control-sm" id="MRNO">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group ">
+                                    <label>Date Time<span class="text-muted"></span></label>
+                                    <div class="kt-input-icon kt-input-icon--right">
+                                        <input type="datetime-local" class="form-control form-control-sm" id="DateTime">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>*@
+                
+                <!--begin::Form-->
+                <form class="kt-form">
+                    <div class="kt-portlet__body scrollbar-light-blue" style="overflow:auto; ">
+
+
+                        @*////////////////////////////////////////////////////////////////////////*@
+                       
+
+                        <div class="kt-portlet__head-label" style="margin-top:1%; margin-bottom:-1%">
+                            <div class="row kt-portlet__head-title">
+                                <div class="col-4">
+                                    <div class="form-group ">
+                                        <label>Patient Name<span class="text-muted"></span></label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" class="form-control form-control-sm" id="PatientName">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group ">
+                                        <label>MR NO<span class="text-muted"></span></label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="text" class="form-control form-control-sm" id="MRNO">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group ">
+                                        <label>Date Time<span class="text-muted"></span></label>
+                                        <div class="kt-input-icon kt-input-icon--right">
+                                            <input type="datetime-local" class="form-control form-control-sm" id="DateTime">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                            
+                       
+                        @*///////////////////////////////////////////////////////////////////////////*@
+
+
+                        <div class="row border border-warning mt-2">
+                            <div class="col-md-12 mt-2">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-12">
+                                                <div class="row-col-separator-md">
+                                                    <div class="col-md-3">
+                                                        <label>1. <span class="text-muted"> -kestine </span></label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p> 20 mg-oral - once - daily - start from 09 06 2020 - untill discontinued <br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12 col-md-12 ">
+                                                <div class="input-group">
+                                                    <select class="custom-select form-control">
+                                                        <option selected>Choose One</option>
+                                                        <option value="1">Pulmonology</option>
+                                                        <option value="2">Radialogy</option>
+                                                    </select>
+                                                    <div class="ml-1">
+                                                        <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="row mt-2 ml-3">
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Quantity Issued<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="QuantityIssued">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Cost<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="Cost">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group pull-right ">
+                                            <label>.<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right pull-right">
+                                                <button type="button" class="btn btn-secondary"><i class="fa fa-times"></i>Close</button>
+                                                <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon"><i class="la la-print "></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row border border-warning mt-2">
+                            <div class="col-md-12 mt-2">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-12">
+                                                <div class="row-col-separator-md">
+                                                    <div class="col-md-3">
+                                                        <label>2. <span class="text-muted"> -Ventoline Inhaler </span></label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p> As required - daily - start from 09 06 2020 - untill discontinued <br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12 col-md-12 ">
+                                                <div class="input-group">
+                                                    <select class="custom-select form-control">
+                                                        <option selected>Choose One</option>
+                                                        <option value="1">Pulmonology</option>
+                                                        <option value="2">Radialogy</option>
+                                                    </select>
+                                                    <div class="ml-1">
+                                                        <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row mt-2 ml-3">
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Quantity Issued<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="QuantityIssued">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Cost<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="Cost">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group pull-right ">
+                                            <label>.<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right pull-right">
+                                                <button type="button" class="btn btn-secondary"><i class="fa fa-times"></i>Close</button>
+                                                <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon"><i class="la la-print"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border border-warning mt-2">
+                            <div class="col-md-12 mt-2">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-12">
+                                                <div class="row-col-separator-md">
+                                                    <div class="col-md-3">
+                                                        <label>3. <span class="text-muted"> -Ventoline Inhaler </span></label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p> As required - daily - start from 09 06 2020 - untill discontinued <br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12 col-md-12 ">
+                                                <div class="input-group">
+                                                    <select class="custom-select form-control">
+                                                        <option selected>Choose One</option>
+                                                        <option value="1">Pulmonology</option>
+                                                        <option value="2">Radialogy</option>
+                                                    </select>
+                                                    <div class="ml-1">
+
+                                                        <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row mt-2 ml-3">
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Quantity Issued<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="QuantityIssued">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Cost<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="Cost">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group pull-right ">
+                                            <label>.<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right pull-right">
+                                                <button type="button" class="btn btn-secondary"><i class="fa fa-times"></i>Close</button>
+                                                <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon"><i class="la la-print"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border border-warning mt-2">
+                            <div class="col-md-12 mt-2">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row-col-separator-md">
+                                            <div class="col-md-12">
+                                                <div class="row-col-separator-md">
+                                                    <div class="col-md-3">
+                                                        <label>4. <span class="text-muted"> -panadol cf </span></label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p> As required - daily - start from 09 06 2020 - untill discontinued <br /> Issued on 07 06 2020 by Dr: jhon Baptiste-cardialogy, status: Active <br /> Order No: 12345, Instructions: None</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12 col-md-12 ">
+                                                <div class="input-group">
+                                                    <select class="custom-select form-control">
+                                                        <option selected>Choose One</option>
+                                                        <option value="1">Pulmonology</option>
+                                                        <option value="2">Radialogy</option>
+                                                    </select>
+                                                    <div class="ml-1">
+                                                        <button type="button" class="btn btn-outline-hover-brand btn-icon  "><i class="la la-paperclip" style="font-size:24px"></i></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row mt-2 ml-3">
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Quantity Issued<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="QuantityIssued">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group ">
+                                            <label>Cost<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right">
+                                                <input type="text" class="form-control" id="Cost">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group pull-right ">
+                                            <label>.<span class="text-muted"></span></label>
+                                            <div class="kt-input-icon kt-input-icon--right pull-right">
+                                                <button type="button" class="btn btn-secondary"><i class="fa fa-times"></i>Close</button>
+                                                <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                                                <button type="button" class="btn btn-outline-hover-brand btn-icon"><i class="la la-print"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+            <!--begin::Portlet-->
+            <!--end::Portlet-->
+        @*</div>
+
+    </div>*@
+</div>

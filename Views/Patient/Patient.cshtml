@@ -1,0 +1,847 @@
+﻿
+
+<link href="@Url.Content("~/Content/assets/vendors/custom/datatables/datatables.bundle.css")" rel="stylesheet" type="text/css" />
+
+
+
+<script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="~/Scripts/Employee/Employee.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            //HideShowTab();
+            //function HideShowTab(ActionType) {
+            //    if (ActionType == "Create") {
+            //        $('#tabCI').hide();
+            //        $('#tabII').hide();
+            //        $('#tabDI').hide();
+            //        $('#tabAcceptance').hide();
+
+            //    }
+            //    if (ActionType == "Update" || ActionType == "Delete") {
+            //        $('#tabCI').show();
+            //        $('#tabII').show();
+            //        $('#tabDI').show();
+            //        $('#tabAcceptance').show();
+
+            //    }
+
+            //}
+
+            var SignaturePostBackURL = '@Url.Action("Signatureinfo", "Patient")';
+            $(function () {
+                $("#Sigpopup").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: SignaturePostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#SignModalContent').html(data);
+                            $('#SignModal').modal(options);
+                            $('#SignModal').modal('show');
+
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+
+                $("#closbtn").click(function () {
+                    $('#SignModal').modal('hide');
+                });
+            });
+            debugger;
+
+            var CreateAddressURL = '@Url.Action("Address", "Address")';
+              $(function () {
+                  $("#CreateAddress").click(function () {
+                    debugger;
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: CreateAddressURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#partialViewContent').html(data);
+                          //  $('#AddressModal').modal(options);
+                            $('#AddressModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#AddressModal').modal('hide');
+                });
+                  $("#PatientClose").click(function () {
+                      $('#myModal').modal('hide');
+                  });
+                 var DocumentPostBackURL = '@Url.Action("DocumentInformation", "Patient")';
+                $("#CreateDI").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: DocumentPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#DIModalContent').html(data);
+                            $('#DIModal').modal(options);
+                            $('#DIModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                  var InsurancePostBackURL = '@Url.Action("InsuranceInformation", "Patient")';
+                $("#CreateII").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: InsurancePostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#IIModalContent').html(data);
+                            $('#IIModal').modal(options);
+                            $('#IIModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+            });
+
+
+            var EmployeeDetailPostBackURL = '@Url.Action("Address", "Address")';
+            $(function () {
+                $("#CreateCI").click(function () {
+                    debugger;
+
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: EmployeeDetailPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#partialViewContent').html(data);
+                         //   $('#CIModalContent').html(data);
+                           // $('#CIModal').modal(options);
+                            $('#CIModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#CIClose").click(function () {
+                    debugger;
+                    $('#CIModal').modal('hide');
+                });
+
+                 var DocumentPostBackURL = '@Url.Action("DocumentInformation", "Patient")';
+                $("#CreateDI").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: DocumentPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#DIModalContent').html(data);
+                            $('#DIModal').modal(options);
+                            $('#DIModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                  var InsurancePostBackURL = '@Url.Action("InsuranceInformation", "Patient")';
+                $("#CreateII").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: InsurancePostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#IIModalContent').html(data);
+                            $('#IIModal').modal(options);
+                            $('#IIModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+                $("#IIClose").click(function () {
+                    $('#IIModal').modal('hide');
+                });
+            });
+
+           var AddressPostBackURL = '@Url.Action("Address", "Address")';
+            $(function () {
+                $("#CreateAddress").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: AddressPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            $('#AddressModalContent').html(data);
+                            $('#AddressModal').modal(options);
+                            $('#AddressModal').modal('show');
+
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+
+                $("#closbtn").click(function () {
+                    $('#AddressModal').modal('hide');
+                });
+            });
+        $(":input").inputmask();
+
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+
+        $(document).on("click", ".browse", function () {
+            var file = $(this).parents().find(".file");
+            file.trigger("click");
+        });
+        $('input[type="file"]').change(function (e) {
+            var fileName = e.target.files[0].name;
+            $("#file").val(fileName);
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // get loaded data and render thumbnail.
+                document.getElementById("preview").src = e.target.result;
+            };
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        });
+
+    });
+
+</script>
+
+
+
+
+<style>
+
+    .file {
+        visibility: hidden;
+        position: absolute;
+    }
+</style>
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel"><span><img src="~/Content/assets/media/med360/patient.svg" class="mr-3" style="width: 30px;"></span>Create Patient Profile</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="PatientClose">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <input type="hidden" id="Tenant_ID" />
+    <input type="hidden" id="Person_ID" />
+    <input type="hidden" id="Patient_ID" />
+    <div class="form-group row">
+        <div class="col-md-3">
+
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>MR No (Patient ID)<span style="color:red;font-weight:bold">*</span>  </label>
+                    <input type="text" class="form-control" id="MR_No">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label>Prefix</label>
+                    <select class="form-control" id="Person_Name_Prefix_LOV_ID">
+                    </select>
+                </div>
+                <div class="col-md-8">
+                    <label>First Name</label>
+
+                    <input type="text" class="form-control" id="Person_First_Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Country  *</label>
+                    <select class="form-control" id="Patient_Country_ID">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Father Name</label>
+
+                    <input type="text" class="form-control" id="Father_Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Emergency Contact Name</label>
+                    <input type="text" class="form-control" id="Emergency_Contact_Name">
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Optional Field 1</label>
+                    <textarea class="form-control" id="OptionalField_1"></textarea>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Preferred Provider</label>
+                    <select class="form-control" id="Preferred_Provider">
+                        <option>Choose One</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Middle Name</label>
+
+                    <input type="text" class="form-control" id="Person_Middle_Name">
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <label>SSN  *</label>
+
+                    <input type="text" class="form-control" id="SSN">
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Date of Birth</label>
+
+                    <input class="form-control" type="date" value="" id="Date_of_Birth">
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Emergency Contact</label>
+                    <input type="text" class="form-control" id="Emergency_Contact_Number">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Optional Field 2</label>
+                    <textarea class="form-control" id="OptionalField_2"></textarea>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Primary Care Physician</label>
+                    <input type="text" class="form-control" id="Primary_Care_Provider">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Last Name</label>
+
+                    <input type="text" class="form-control" id="Person_Last_Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>CNIC</label>
+
+                    <input id="CNIC" type="text" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X" name="cnic" required="" class="form-control">
+
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Gender</label>
+                    <select class="form-control" id="Gender_LOV_ID">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Marital Status</label>
+                    <select class="form-control" id="Marital_Status_LOV_ID">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label>Optional Field 3</label>
+                    <textarea class="form-control" id="OptionalField_3"></textarea>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+
+            <div class="form-group row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-10">
+
+                    <img src="~/Content/assets/media/users/300_20.jpg" id="preview" class="img-thumbnail" style="width:76%;margin-bottom:4px">
+
+                    <div id="msg"></div>
+                    @*<form method="post" id="image-form">*@
+                    <input type="file" name="img[]" class="file" accept="image/*">
+
+                    <button type="button" class="browse btn btn-info ml-4" id="Upload"><i class="fa fa-upload"></i>Upload Image</button>
+                    @*<input type="text" class="form-control btn btn-danger" placeholder="Choose Option" id="file">*@
+                    @*<div class="form-control" style="margin-top:4%;">
+
+                        </div>*@
+
+                    @*</form>*@
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-10">
+                    <label>Access to Portal</label>
+                    <div class="kt-radio-inline" id="Web_Portal_Access">
+                        <label class="kt-radio kt-radio--solid">
+                            <input type="radio" name="WPA" checked value="1" id="1"> Yes
+                            <span></span>
+                        </label>
+                        <label class="kt-radio kt-radio--solid">
+                            <input type="radio" name="WPA" value="2" id="2"> No
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-10">
+                    <label>Optional Field 4</label>
+                    <textarea class="form-control" id="OptionalField_4"></textarea>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-10">
+                    <label>Optional Field 5</label>
+                    <textarea class="form-control" id="OptionalField_5"></textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+    <button type="button" class="btn btn-info" id="SaveChanges" onclick="Add();"><i class="fa fa-save"></i>Save</button>
+    <button type="button" id="Update" onclick="Update();" class="btn btn-info" style="display:none">Update</button>
+    <button type="button" id="Delete" onclick="Delete();" class="btn btn-info" style="display:none">Delete</button>
+
+</div>
+
+
+<div class="kt-portlet" id="tabCI">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+
+                    Contact Information <i class="fas fa-angle-down rotate-icon"></i>
+                </a>
+
+            </h3>
+
+
+        </div>
+        <div class="kt-portlet__head-toolbar">
+
+            <button id="CreateCI" type="button" class="btn btn-info" style="width:280px;" data-url="@Url.Action("Address", "Address")"><i class="fa fa-plus"></i>Create New Contact Information</button>
+        </div>
+    </div>
+    <input id="CI_Person_Address_ID" type="hidden"/>
+    <input id="CI_Person_ID" type="hidden"/>
+    <input id="CI_Tenant_ID" type="hidden"/>
+    <input id="CI_Address_ID" type="hidden"/>
+    <!--begin::Form-->
+    <form id="collapseExample" class="kt-form kt-form--label-right collapse">
+
+
+        <div class="kt-portlet__body">
+
+            <!--begin: Datatable -->
+            <table class="table table-striped table-bordered" id="CI_List">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Email</th>
+
+                        <th>Zip Code</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                       
+                    </tr>
+                </thead>
+                
+            </table>
+
+            <!--end: Datatable -->
+        </div>
+
+
+    </form>
+    <!--end::Form-->
+    <div id='CIModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-phone mr-3" style="width: 30px;"></i> Create Contact Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CIClose">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="partialViewContent">
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                    <button type="button" id="SaveCI" class="btn btn-info" onclick="CI_SaveData()"><i class="fa fa-save"></i>Save</button>
+                    <button type="button" id="UpdateCI" onclick="CI_UpdateData();" class="btn btn-info" style="display:none">Update</button>
+                    <button type="button" id="DeleteCI" onclick="CI_DeleleData();" class="btn btn-info" style="display:none">Delete</button>
+                </div>
+
+
+
+
+
+                @*<div id='CIModalContent'></div>*@
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--end::Portlet-->
+<!--begin::Portlet-->
+<div class="kt-portlet" id="tabII">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                <a data-toggle="collapse" href="#collapseExample_1" aria-expanded="false" aria-controls="collapseExample_1">
+                    Insurance Information <i class="fas fa-angle-down rotate-icon"></i>
+                </a>
+
+            </h3>
+        </div>
+        <div class="kt-portlet__head-toolbar">
+
+            <button id="CreateII" type="button" class="btn btn-info" style="width:280px;" data-url="@Url.Action("InsuranceInformation", "Patient")"><i class="fa fa-plus"></i>Create New Insurance Information</button>
+        </div>
+    </div>
+    <form id="collapseExample_1" class="kt-form kt-form--label-right collapse">
+
+        <div class="kt-portlet__body">
+
+            <!--begin: Datatable -->
+            <!--begin: Datatable -->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered" id="II_List">
+                    <thead>
+                        <tr>
+
+                            <th>Actions</th>
+                            <th>Mode of Coverage</th>
+                            <th>Insurance Type</th>
+                            <th>Insurance Provider</th>
+                            <th>Verified</th>
+                            <th>Expiration Date</th>
+                            <th>Insurance Plan</th>
+                            <th>Country</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>Zip Code</th>
+                            <th>Gurantor Name</th>
+                            <th>Gurantor DOB</th>
+                            <th>Gurantor Relation</th>
+                            <th>Insurance Notes</th>
+
+
+
+                        </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+            <!--end: Datatable -->
+        </div>
+
+
+    </form>
+    <!--end::Form-->
+    <div id='IIModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="IIModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div id='IIModalContent'></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--end::Portlet-->
+<!--begin::Portlet-->
+<div class="kt-portlet" id="tabDI">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                <a data-toggle="collapse" href="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_2">
+                    Document Information <i class="fas fa-angle-down rotate-icon"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="kt-portlet__head-toolbar">
+
+            <button id="CreateDI" type="button" class="btn btn-info" style="width:280px;" data-url="@Url.Action("DocumentInformation", "Patient")"><i class="fa fa-plus"></i>Create New Document Information</button>
+        </div>
+    </div>
+
+    <!--begin::Form-->
+    <form id="collapseExample_2" class="kt-form kt-form--label-right collapse">
+
+        <div class="kt-portlet__body" style="overflow:auto;width:100%">
+
+            <!--begin: Datatable -->
+            <table class="table table-striped table-bordered" id="DI_List">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Document Name</th>
+                        <th>Description</th>
+                        <th>Document Type</th>
+                        <th>Expiry Date</th>
+                        <th>Entered By</th>
+                        <th>Entered Date</th>
+                        <th>Audit By</th>
+                        <th>Audit Date</th>
+                    </tr>
+                </thead>
+
+            </table>
+
+            <!--end: Datatable -->
+        </div>
+
+
+    </form>
+    <!--end::Form-->
+    <div id='DIModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="DIModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div id='DIModalContent'></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--end::Portlet-->
+<!--begin::Portlet-->
+<div class="kt-portlet" id="tabAcceptance">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                <a data-toggle="collapse" href="#collapseExample_3" aria-expanded="false" aria-controls="collapseExample_3" data-target="#collapseExample_3">
+                    Acceptance
+
+                    <i class="fas fa-angle-down rotate-icon"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+
+
+    <!--begin::Form-->
+    <form id="collapseExample_3" class="kt-form collapse">
+        <div class="kt-portlet__body">
+            <div class="kt-section kt-section--first">
+
+                <div class="kt-checkbox-list">
+                    <label class="kt-checkbox">
+                        <input type="checkbox"> Read All Instruction Carefully
+                        <span></span>
+                    </label>
+                    <label class="kt-checkbox">
+                        <input type="checkbox"> Accept All Hospital Conditions
+                        <span></span>
+                    </label>
+
+                </div>
+
+                @*signature popup modal*@
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">Signature</label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="Signature"></textarea>
+                    </div>
+
+                    @*<div class="col-md-4 kt-align-right">
+
+                        <button id="Sigpopup" type="button" class="btn btn-info "><i class="fas fa-file-signature"></i>Signature</button>
+                    </div>*@
+                    @*signature popup modal*@
+
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">Date</label>
+                    <div class="col-md-6">
+                        <input type="date" class="form-control" id="Consent_Date" />
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="kt-form__actions">
+                <div class="row">
+                    <div class="col-md-10">
+                    </div>
+                    <div class="col-md-2 kt-align-right">
+                        <button type="button" class="btn btn-info" id="Accept" onclick="AcceptData()"><i class="fa fa-save"></i>Accept</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div id='SignModal' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="SignModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div id='SignModalContent'></div>
+            </div>
+        </div>
+
+    </div>
+    <!--end::Form-->
+</div>
+
+<!--end::Portlet-->

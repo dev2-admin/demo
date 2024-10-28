@@ -1,0 +1,698 @@
+﻿@{
+    ViewBag.PageName = "Nurse Dashboard";
+
+
+
+}
+
+@section Styles {
+
+
+    <link href="@Url.Content("~/Content/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css")" rel="stylesheet" type="text/css" />
+
+
+}
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Content/assets/vendors/custom/datatables/datatables.bundle.js")"></script>
+    <script src="@Url.Content("~/Scripts/Dashboard/NurseDashboard.js")"></script>
+}
+
+<!-- begin:: Content Head -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title"><span><img style="width:30px;" class="mr-3" src="~/Content/assets/media/med360/nurse.png"></span>Nurse Dashboard</h3>
+
+    </div>
+</div>
+
+<!-- end:: Content Head -->
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+    <!--Begin::Dashboard 1-->
+    <!--Begin::Section-->
+    <div class="row mb-4">
+
+        <div class="col-xl-3">
+            <div class="dashboardCtr">
+                <div>
+                    <p>Total Visit</p>
+                    <h2>37 <span class="custom-arrow-ctr green"><i class=""></i></span></h2>
+                    @*<p>New Patients: <strong>45</strong><span class="custom-arrow-ctr green"><i class="fa fa-angle-up"></i></span></p>*@
+                </div>
+                <div class="text-right">
+                    <img src="~/Content/assets/media/dashboard/icon_2.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="dashboardCtr">
+                <div>
+                    <p>Patient Waiting</p>
+                    <h2>25 <span class="custom-arrow-ctr green"><i class="fa fa-arrow-circle-up"></i></span></h2>
+                    @*<p>New Hospitals/Clinics: <strong>45</strong> <span class="custom-arrow-ctr red"><i class="fa fa-angle-down"></i></span></p>*@
+                </div>
+                <div class="text-right">
+                    <img src="~/Content/assets/media/dashboard/icon_1.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="dashboardCtr">
+                <div>
+                    <p>Average Encounter Time</p>
+                    <h2>25<span class="custom-arrow-ctr green"><i class="fa fa-arrow-circle-down"></i></span></h2>
+                    @*<p>Total Visitors: <strong>45</strong> <span class="custom-arrow-ctr green"><i class="fa fa-angle-up"></i></span></p>*@
+                </div>
+                <div class="text-right">
+                    <img src="~/Content/assets/media/dashboard/icon_3.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="dashboardCtr">
+                <div>
+                    <p>Patient In Exam Room</p>
+                    <h2>10<span class="custom-arrow-ctr green"><i class="fa fa-arrow-circle-up"></i></span></h2>
+                    @*<p>New Staff: <strong>45</strong><span class="custom-arrow-ctr red"><i class="fa fa-angle-down"></i></span></p>*@
+                </div>
+                <div class="text-right">
+                    <img src="~/Content/assets/media/dashboard/icon_4.png">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--End::Section-->
+    <!--Begin::Section-->
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile shdow">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                            Patient
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-list-alt"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
+
+                                <!--begin::Nav-->
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__head">
+                                        Export Options
+                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                    </li>
+                                    <li class="kt-nav__separator"></li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                            <span class="kt-nav__link-text">Activity</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!--end::Nav-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__body kt-portlet__body--fit">
+
+                    <!--begin: Datatable -->
+                    <div class="col-12">
+
+                        <table id="patientlist" class="table table-hoverable ktTble table-checkable">
+                            <thead class="">
+                                <tr>
+                                    <th>Actions</th>
+                                    <th>MR No</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                <tr>
+                                    <td nowrap></td>
+                                    <td><span>MR-0001</span></td>
+                                    <td>Ali</td>
+                                    <td><span>Male</span></td>
+                                    <td><span>Exam Room</span></td>
+
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td><span>MR-0001</span></td>
+                                    <td>Ali</td>
+                                    <td><span>Male</span></td>
+                                    <td><span>Exam Room</span></td>
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td><span>MR-0001</span></td>
+                                    <td>Ali</td>
+                                    <td><span>Male</span></td>
+                                    <td><span>Exam Room</span></td>
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td><span>MR-0001</span></td>
+                                    <td>Ali</td>
+                                    <td><span>Male</span></td>
+                                    <td><span>Exam Room</span></td>
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td><span>MR-0001</span></td>
+                                    <td>Ali</td>
+                                    <td><span>Male</span></td>
+                                    <td><span>Exam Room</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile shdow">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                            Doctors Order
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-list-alt"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
+
+                                <!--begin::Nav-->
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__head">
+                                        Export Options
+                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                    </li>
+                                    <li class="kt-nav__separator"></li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                            <span class="kt-nav__link-text">Activity</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!--end::Nav-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__body kt-portlet__body--fit">
+
+                    <!--begin: Datatable -->
+                    <div class="col-12">
+                       
+                            <table id="docOrder" class="table table-hoverable ktTble table-checkable">
+                                <thead class="">
+                                    <tr>
+                                        <th>MR No</th>
+                                        <th>Patient Name</th>
+                                        <th>Orders</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="font-edit-delet">
+                                    <tr>
+                                        <td>4510</td>
+                                        <td><span>Asad</span></td>
+                                        <td><span>Drip</span></td>
+                                        <td><span>Completed</span></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4510</td>
+                                        <td><span>Hamza</span></td>
+                                        <td><span>Male</span></td>
+                                        <td><span>Pending</span></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4510</td>
+                                        <td><span>Ali</span></td>
+                                        <td><span>Male</span></td>
+                                        <td><span>Pending</span></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4510</td>
+                                        <td><span>Azeen</span></td>
+                                        <td><span>Injection</span></td>
+                                        <td><span>Pending</span></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4510</td>
+                                        <td><span>Ishfaq</span></td>
+                                        <td><span>Injection</span></td>
+                                        <td><span>Pending</span></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                       
+
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile shdow">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                            Staff
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-list-alt"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
+
+                                <!--begin::Nav-->
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__head">
+                                        Export Options
+                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                    </li>
+                                    <li class="kt-nav__separator"></li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                            <span class="kt-nav__link-text">Activity</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!--end::Nav-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__body kt-portlet__body--fit">
+
+                    <!--begin: Datatable -->
+                    <div class="col-12">
+                        
+                            <table id="Staff" class="table table-hoverable ktTble table-checkable">
+                                <thead class="">
+                                    <tr>
+                                        <th>Actions</th>
+                                        <th>Name</th>
+                                        <th>Designation</th>
+                                        <th>Clinic Name</th>
+                                        <th>Duty Time</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>Ali</td>
+                                        <td><span>Lungs Specialist</span></td>
+                                        <td><span>Pulmonology</span></td>
+                                        <td><span>Exam Room</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>Ali</td>
+                                        <td><span>Lungs Specialist</span></td>
+                                        <td><span>Pulmonology</span></td>
+                                        <td><span>Exam Room</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>Ali</td>
+                                        <td><span>Lungs Specialist</span></td>
+                                        <td><span>Pulmonology</span></td>
+                                        <td><span>Exam Room</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>Ali</td>
+                                        <td><span>Lungs Specialist</span></td>
+                                        <td><span>Pulmonology</span></td>
+                                        <td><span>Exam Room</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>Ali</td>
+                                        <td><span>Lungs Specialist</span></td>
+                                        <td><span>Pulmonology</span></td>
+                                        <td><span>Exam Room</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile shdow">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                            Stats
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-list-alt"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
+
+                                <!--begin::Nav-->
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__head">
+                                        Export Options
+                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                    </li>
+                                    <li class="kt-nav__separator"></li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                            <span class="kt-nav__link-text">Activity</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!--end::Nav-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__body kt-portlet__body--fit">
+
+                    <!--begin: Datatable -->
+                    <div class="col-12">
+                        
+                            <table id="stats" class="table table-hoverable ktTble table-checkable">
+                                <thead class="">
+                                    <tr>
+
+                                        <th>Total</th>
+                                        <th>Count</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="font-edit-delet">
+                                    <tr>
+
+
+                                        <td>Walkin</td>
+                                        <td><span>10</span></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>Scheduled</td>
+                                        <td><span>15</span></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>Seen</td>
+                                        <td><span>25</span></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>Pending</td>
+                                        <td><span>30</span></td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>Walkin</td>
+                                        <td><span>17</span></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                       
+
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile shdow">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                            Quick Links
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-list-alt"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
+
+                                <!--begin::Nav-->
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__head">
+                                        Export Options
+                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                    </li>
+                                    <li class="kt-nav__separator"></li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                            <span class="kt-nav__link-text">Activity</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+
+
+                                <!--end::Nav-->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title"></h3>
+                    </div>
+                    <div class=" kt-portlet__head-toolbar ">
+                        <button type="button" class="btn btn-primary">
+                            Add New Link
+                        </button>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__body kt-portlet__body--fit">
+
+                    <!--begin: Datatable -->
+                    <div class="col-12">
+                       
+                            <table id="quickLinks" class="table table-hoverable ktTble">
+                                <thead class="table-head-custom">
+                                    <tr>
+                                        <th>Actions</th>
+                                        <th >Name</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody class="font-edit-delet">
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>www.med360.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>www.med360.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>www.med360.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>www.med360.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap></td>
+                                        <td>www.med360.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                       
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile shdow">
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title">
+                            To Do List
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-list-alt"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-md dropdown-menu-fit">
+
+                                <!--begin::Nav-->
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__head">
+                                        Export Options
+                                        <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                                    </li>
+                                    <li class="kt-nav__separator"></li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                            <span class="kt-nav__link-text">Activity</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+
+
+                                <!--end::Nav-->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="kt-portlet__head kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title custom-table-title"></h3>
+                    </div>
+                    <div class=" kt-portlet__head-toolbar ">
+                        <button type="button" class="btn btn-primary">
+                            Add New Task
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="kt-portlet__body kt-portlet__body--fit">
+
+                    <!--begin: Datatable -->
+                    <div class="col-12">
+
+                        <table id="todoList" class="table table-hoverable ktTble">
+                            <thead class="table-head-custom">
+                                <tr>
+                                    <th>Actions</th>
+                                    <th>Name</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody class="font-edit-delet">
+                                <tr>
+                                    <td nowrap></td>
+                                    <td>Review Pending Bills</td>
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td>Send Change Request</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td>Review Pending Bill</td>
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td>Review Pending Bill</td>
+
+                                </tr>
+                                <tr>
+                                    <td nowrap></td>
+                                    <td>Send Change Request</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <!--end: Datatable -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!--Begin::Section-->
+    <div class="row">
+
+    </div>
+
+    <!--End::Section-->
+    <!--End::Dashboard 1-->
+</div>
+
+<!-- end:: Content -->

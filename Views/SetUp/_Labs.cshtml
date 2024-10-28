@@ -1,0 +1,124 @@
+﻿
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                
+                <h3 class="kt-portlet__head-title" style="color:white">
+                    @*<span> <img src="~/Content/assets/media/med360/pharmacy.png" class="mr-3" style="width: 30px;"></span>*@
+                    Add Lab Order
+                </h3>
+            </div>
+        </div>
+        <!--begin::Form-->
+        <form class="kt-form">
+            <div class="kt-portlet__body">
+                <div class="form-group col-md-6">
+                    <label>Test Name</label>
+
+                    <select class="form-control" id="exampleSelect2">
+                        <option></option>
+                        <option>CBC</option>
+                        <option>17-OH Progesterone  </option>
+                        <option>25-OH Vitamin D3 </option>
+                        <option>3D Hematology (From NIBD)    </option>
+                        <option>3gAllergy Specific IgE Universal Food Allergens </option>
+                        <option>3gAllergy Specific IgE Universal Inhalant Allergens Profile</option>
+
+                    </select>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Order To</label>
+
+                    <select class="form-control" id="exampleSelect1">
+                        <option></option>
+                        <option>Internal</option>
+                        <option>External</option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label>Set Test By Date</label>
+                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+
+
+                <div class="form-group col-md-12">
+                    <label for="exampleTextarea">Instructions</label>
+                    <textarea class="form-control" id="exampleTextarea" form-group rows="3"></textarea>
+                </div>
+
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+
+                    <div class="form-group row">
+                        <div class="col-md-7">
+                        </div>
+                        <div class="col-md-5 kt-align-right">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                            <button type="button" class="btn btn-info"><i class="fa fa-save"></i>Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+    </div>
+
+    <!--end::Portlet-->
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    Added Test List
+                </h3>
+            </div>
+
+        </div>
+        <div class="kt-portlet__body">
+            <div class="col-lg-10">
+                <table class="table  table-bordered table-hover" id="kt_table_2">
+
+                    <tbody>
+
+                        <tr>
+                            <td>PFT</td>
+
+                        </tr>
+                        <tr>
+                            <td>CBC</td>
+
+                        </tr>
+                        <tr>
+                            <td>CT Scan</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="kt-form__actions">
+                <div class="row">
+                    <div class="col-md-7">
+                    </div>
+                    <div class="col-md-5 kt-align-right">
+
+                        <button type="button" class="btn btn-info"><i class="fas fa-file-signature"></i>Sign</button>
+                        <button type="button" class="btn btn-info"><i class="fas fa-signature"></i>Co-sign</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>

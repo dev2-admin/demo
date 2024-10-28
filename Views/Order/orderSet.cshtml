@@ -1,0 +1,457 @@
+﻿@section Styles {
+    <link href="@Url.Content("~/Content/assets/vendors/custom/datatables/datatables.bundle.css")" rel="stylesheet" type="text/css" />
+}
+@section Scripts
+{
+    <script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/pages/crud/datatables/advanced/row-grouping.js" type="text/javascript"></script>
+
+}
+
+
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        
+        <div class="col-lg-6" id="2">
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Add Medicine
+                        </h3>
+                    </div>
+
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form">
+                    <div class="kt-portlet__body">
+                        <div class="form-group row">
+                            <div class="col-md-8">
+                                <label for="exampleSelect2">Medicine Name</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>Kestine </option>
+                                    <option>Ventolin Inhaler</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label for="exampleSelect2">Dosage</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>5mg</option>
+                                    <option>10mg</option>
+                                    <option>15mg</option>
+                                    <option>20mg</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label for="exampleSelect2">Select Route</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>Oral</option>
+                                    <option>Injection</option>
+                                    <option>Iv</option>
+
+                                </select>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label for="exampleSelect2">Set Routine</label>
+                                <input class="form-control" type="time" value="" id="example-time-input">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label for="exampleSelect2">Days</label>
+                                <select class="form-control" id="exampleSelect2">
+                                    <option></option>
+                                    <option>1Day</option>
+                                    <option>2Day</option>
+                                    <option>3Day</option>
+                                    <option>4Day</option>
+                                    <option>5Day</option>
+                                    <option>6Day</option>
+                                    <option>7Day</option>
+                                    <option>1week</option>
+                                    <option>2week</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label>Start Date</label>
+                                <input class="form-control" type="date" id="Start_Date" format='dd/mm/yyyy'>
+                            </div>
+                            <div class="col-md-6">
+                                <label>End Date</label>
+                                <input class="form-control" type="date" id="example-date-input" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="exampleTextarea">Instructions</label>
+                                <textarea class="form-control" id="exampleTextarea"></textarea>
+                            </div>
+                        </div>
+
+                        @*<div class="row">
+                            <div class="col-3">
+                                <span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill kt-badge--rounded"><b>Add +</b></span>
+
+                                <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill kt-badge--rounded"><b>Clear</b></span>
+                            </div>
+                        </div>*@
+                        @*<div class="row">
+                            <div class="form-group form-group-last col-4">
+                                <label for="exampleTextarea">Add Medicine List</label>
+                                <textarea class="form-control" id="exampleTextarea" rows="4"></textarea>
+                            </div>
+                        </div>*@
+
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-9">
+                                    <button type="submit" class="btn btn-success">Add</button>
+                                    <button type="reset" class="btn btn-danger">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+                <!--end::Form-->
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Added Medicine List
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="col-lg-10">
+                        <table class="table  table-bordered table-hover " id="kt_table_2">
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Panadol</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Ventolin Inhaler</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Clorazepam</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Orders Issued
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form">
+                    <div>&nbsp;</div>
+                    <div class="input-group col-lg-6">
+                        <input type="text" placeholder="Search ..." class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="la la-search search-icon"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="kt-portlet__body">
+                        <div class="kt-section kt-section--first">
+                            <div>
+                                @*<h3 class="kt-section__title">Medicine<span class="kt-badge kt-badge--brand">+</span> </h3>
+        <a href="#" class="la la-plus-circle"></a>*@
+
+
+                                @*<h3 class="kt-section__title">
+            Medicine
+            <a href="@Url.Action("TreatmentSet","Order")" class="btn btn-brand btn-elevate btn-icon-sm" onclick="myFunction()">
+                <span class="kt-badge kt-badge--brand" >+</span>
+
+            </a>
+        </h3>*@
+                                <button onclick="myFunction()">Medicine+</button>
+
+                                <p id="demo"></p>
+
+                                <script>
+                                    function myFunction() {
+                                        //var time = new Date().getHours();
+                                        var greeting;
+                                        if (onclick="true") {
+                                            greeting = "<a href="@Url.Action("TreatmentSet","Order")"";
+                                        } else {
+                                            greeting = "Good evening";
+                                        }
+                                        document.getElementById("demo").innerHTML = greeting;
+                                    }
+                                </script>
+
+
+                            </div>
+
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Kestine 20 mg - Oral - Once - Daily - Start from 09-06-2020 - Until Discontinued <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Active</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Ventolin Inhaler - As Required - Daily - Start from 09-06-2020 - Until Discontinued <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : InActive</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Labs<a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <td style='width: 80%;'>PFT On 09-06-2020 - Test by Internal Lab <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Completed</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td style='width: 80%;'>CBC On 09-06-2020 - Test by Agha Khan Lab <br /> Issued On 07-06-2020 by Dr John Baptiste - Status : Pending</td>
+
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Treatment<a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Nebulization - Twice - Daily - Start from 09-06-2020 - Until 11-06-2020 <br /> Issued On 07-06-2020 by Dr Muhammad Khan <br /> Issued to Nurse Jane Doe , Status : Comleted</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Procedures <a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Bronchoscopy On 08-06-2020 - Provider Dr John Baptiste <br /> Issued On 07-06-2020 by Dr Muhammad Khan - Status : Pending</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Diet <a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Follow Diabetic Diet - Start from 09-06-2020 - Until Discontinued</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Exercise <a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Light Jogging - Once - Weekly - Start from 09-06-2020 - Until 11-07-2020 <br /> Issued On 07-06-2020 by Dr Muhammad Khan</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">FollowUp - Appointment <a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Follow Up Date: 09-06-2020 <br /> Appointment Status : Scheduled</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Referrals <a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Dept/Clinic: Rheumatology,Provider : Dr Muhammad Tahir <br /> Reason of Referral:Joint Pain ,Referred by Dr John Baptiste , Referred On :07-06-2020, Appointment Status : Not Scheduled</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                            <h3 class="kt-section__title">Other <a href="#" class="la la-plus-circle"></a></h3>
+                            <div class="kt-section__body">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <table class="table  table-borderless table-hover " id="kt_table_2">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td style='width: 80%;'>Avoid Passive Smoking</td>
+                                                    <td style='width: 20%;'>  <a href="#" class="la la-edit"></a>   <a href="#" class="la la-refresh"></a> </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!--end::Form-->
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>
